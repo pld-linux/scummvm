@@ -1,14 +1,14 @@
 Summary:	SCUMM graphic adventure game interpreter
 Summary(pl):	Interpreter przygodówek opartych na SCUMM
 Name:		scummvm
-Version:	0.4.1
+Version:	0.5.0
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
-# Source0-md5:	a66d3055c03bd2a0f612f483ecd05fe9
 Source0:	http://dl.sf.net/scummvm/%{name}-%{version}.tar.bz2
-# Source1-md5:	d7415eb6e55a78061964930563f78308
+# Source0-md5:	d8282c8ca4a11751991b00cca3f20e1e
 Source1:	http://dl.sf.net/scummvm/%{name}-tools-%{version}.tar.bz2
+# Source1-md5:	4d9d4821b2cac5225ac408f00a69c189
 Source2:	%{name}.desktop
 Source3:	%{name}.png
 Patch0:		%{name}-makefile.patch
