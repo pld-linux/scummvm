@@ -14,7 +14,7 @@ Source2:	%{name}.desktop
 Source3:	%{name}.png
 Patch0:		%{name}-makefile.patch
 BuildRequires:	libvorbis-devel
-BuildRequires:	mad-devel
+BuildRequires:	libmad-devel
 BuildRequires:	SDL-devel >= 1.2.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
