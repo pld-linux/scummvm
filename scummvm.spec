@@ -1,18 +1,17 @@
-%define		version_tools	0.6.0
+%define		version_tools	0.6.1
 Summary:	SCUMM graphic adventure game interpreter
 Summary(pl):	Interpreter przygodówek opartych na SCUMM
 Name:		scummvm
-Version:	0.6.0
+Version:	0.6.1
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
-Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
-# Source0-md5:	efc4207a7f10b24e9fc5afa10ed9c455
-Source1:	http://dl.sourceforge.net/%{name}/%{name}-tools-%{version_tools}.tar.bz2
-# Source1-md5:	09ded7a8177fda1b861731052b8693c4
+Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}-src.tar.bz2
+# Source0-md5:	392bf788bb367258e5c34f77eced954d
+Source1:	http://dl.sourceforge.net/%{name}/%{name}-tools-%{version_tools}-src.tar.bz2
+# Source1-md5:	b2ba0801fbd85a568af1c5af14fd18ac
 Source2:	%{name}.desktop
 Source3:	%{name}.png
-Patch0:		%{name}-gcc34.patch
 URL:		http://scummvm.sourceforge.net/
 BuildRequires:	libmad-devel
 BuildRequires:	libvorbis-devel
@@ -22,41 +21,51 @@ BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-ScummVM is an implementation of the SCUMM (Script Creation Utility for
-Maniac Mansion) engine used in various Lucas Arts games such as Monkey
-Island and Day of the Tentacle. At this time ScummVM should be considered
-ALPHA software, as it's still under heavy development. Be aware that while
-many games will work with few major bugs, crashes can happen. Also note
-that saved games can, and probably will, be incompatible between releases.
+ScummVM is a collection of interpreters, capable of emulating several
+adventure game engines. ScummVM mainly supports games created using
+SCUMM (Script Creation Utility for Maniac Mansion), used in various
+LucasArts games such as Monkey Island, Day of the Tentacle, and
+others.
 
-Also ScummVM is capable of playing several non-SCUMM games, at the moment
-this includes Simon The Sorcerer.
+ScummVM also contains interpreters for several non-SCUMM games.
+Currently these are Beneath a Steel Sky, Broken Sword 1 & 2, Flight of
+the Amazon Queen and Simon the Sorcerer 1 & 2.
+
+At this time ScummVM should be considered beta software, and is still
+under heavy development. Be aware that whilst we attempt to make sure
+that many games can be completed with few major bugs, crashes can
+happen.
 
 %description -l pl
-ScummVM jest implementacj± silnika SCUMM (Narzêdzie tworz±ce skrypty dla
-Maniac Mansion) u¿ywanego w wielu grach Lucas Arts takich jak Monkey Island,
-czy Day of the Tentacle. ScummVM jest ca³y czas intensywnie rozwijany i
-powinien byæ traktowany jako program w stanie ALPHA. Wiele gier mo¿e siê
-wysypywaæ, lub dzia³aæ z b³êdami. Zapisane stany gry bêd± prawdopodobnie
-niekompatybilne pomiêdzy ró¿nymi wersjami ScummVM.
+ScummVM jest zbiorem interpreterów zdolnych do emulacji kilku silników
+gier przygodowych. ScummVM g³ównie wspiera gry stworzone z u¿yciem
+silnika SCUMM (Script Creation Utility for Maniac Mansion), u¿ywanego
+przez takie tytu³y stworzone przez Lucas Arts jak Monkey Island, Day
+of the Tentacle.
 
-ScummVM potrafi równie¿ obs³u¿yæ gry nie oparte na silniku SCUMM. W chwili
-obecnej jest to Simon The Sorcerer.
+ScummVM potrafi równie¿ interpretowaæ kilka gier nie opartych na
+SCUMM. W chwili obecnej s± to Beneath a Steel Sky, Broken Sword 1 i 2,
+Flight of the Amazon Queen oraz Simon the Sorcerer 1 i 2.
+
+ScummVM jest ca³y czas intensywnie rozwijany i powinien byæ traktowany
+jako program w stanie beta. Wiele gier powinno daæ siê skoñczyæ bez
+wiêkszych b³êdów, nale¿y byæ jednak ¶wiadomym, ¿e program mo¿e siê
+czasem wysypaæ.
 
 %package tools
-Summary:	SCUMM tools
-Summary(pl):	Narzêdzia zwi±zane ze SCUMM
+Summary:	ScummVM tools
+Summary(pl):	Narzêdzia zwi±zane ze ScummVM
 Group:		X11/Applications/Games
 
 %description tools
-SCUMM tools.
+Collection of various tools that may be useful to use in conjunction
+with ScummVM.
 
 %description tools -l pl
-Narzêdzia zwi±zane ze SCUMM.
+Zestaw narzêdzi mog±cych byæ u¿ytecznymi w po³±czeniu ze ScummVM.
 
 %prep
 %setup -q -a 1
-%patch0 -p1
 
 %build
 ./configure \
@@ -67,7 +76,7 @@ Narzêdzia zwi±zane ze SCUMM.
 	CFLAGS="%{rpmcflags}" \
 	LDFLAGS="%{rpmldflags}"
 
-cd %{name}-tools-%{version_tools}
+cd %{name}-%{version_tools}-tools
 %{__make} \
 	CC="%{__cc}" \
 	CFLAGS="%{rpmcflags}" \
@@ -80,8 +89,11 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man6,%{_pixmapsdir},%{_desktopd
 install scummvm $RPM_BUILD_ROOT%{_bindir}
 install scummvm.6 $RPM_BUILD_ROOT%{_mandir}/man6
 
-cd %{name}-tools-%{version_tools}
-install {descumm,rescumm,simon2mp3} $RPM_BUILD_ROOT%{_bindir}
+cd %{name}-%{version_tools}-tools
+install {rescumm,loom_tg16_extract,mm_nes_extract} $RPM_BUILD_ROOT%{_bindir}
+install {queenrebuild,simon2mp3,compress_san} $RPM_BUILD_ROOT%{_bindir}
+install {descumm,desword2} $RPM_BUILD_ROOT%{_bindir}
+install {simon1decr,convbdf} $RPM_BUILD_ROOT%{_bindir}
 install extract $RPM_BUILD_ROOT%{_bindir}/extract-scummvm
 cd -
 
@@ -93,7 +105,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc NEWS README
+%doc NEWS README TODO
 %attr(755,root,root) %{_bindir}/scummvm
 %{_mandir}/man6/*
 %{_pixmapsdir}/*
@@ -101,6 +113,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files tools
 %defattr(644,root,root,755)
-%doc %{name}-tools-%{version_tools}/README
+%doc %{name}-%{version_tools}-tools/README
 %attr(755,root,root) %{_bindir}/*
 %exclude %{_bindir}/scummvm
