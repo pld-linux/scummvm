@@ -15,8 +15,6 @@ BuildRequires:	mad-devel
 BuildRequires:	SDL-devel >= 1.2.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix		/usr/X11R6
-%define		_mandir		%{_prefix}/man
 
 %description
 ScummVM is an implementation of the SCUMM (Script Creation Utility for
