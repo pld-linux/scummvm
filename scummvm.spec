@@ -6,9 +6,9 @@ Version:	0.5.1
 Release:	2
 License:	GPL
 Group:		X11/Applications/Games
-Source0:	http://dl.sf.net/scummvm/%{name}-%{version}.tar.bz2
+Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
 # Source0-md5:	67bdbe2e145b8072d0bac61f7ed150c0
-Source1:	http://dl.sf.net/scummvm/%{name}-tools-%{version_tools}.tar.bz2
+Source1:	http://dl.sourceforge.net/%{name}/%{name}-tools-%{version_tools}.tar.bz2
 # Source1-md5:	4d9d4821b2cac5225ac408f00a69c189
 Source2:	%{name}.desktop
 Source3:	%{name}.png
