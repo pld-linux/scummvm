@@ -2,7 +2,7 @@
 # TODO:
 # - add desktop file and png icon. (when gui is ready)
 #
-%define		_snap		20021006
+%define		_snap		20021109
 %define		_toolsnap	20020919
 Summary:	SCUMM graphic adventure game interpreter
 Summary(pl):	Interpreter przygodówek opartych na SCUMM
@@ -86,7 +86,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc NEWS README debian/README.Debian
+%doc NEWS README
 %attr(755,root,root) %{_bindir}/scummvm
 %{_mandir}/man6/*
 
