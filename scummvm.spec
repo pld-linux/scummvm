@@ -13,10 +13,13 @@ Source1:	http://dl.sourceforge.net/scummvm/%{name}-tools-%{version_tools}.tar.bz
 Source2:	%{name}.desktop
 Source3:	%{name}.png
 URL:		http://scummvm.sourceforge.net/
+BuildRequires:	SDL-devel >= 1.2.2
 BuildRequires:	libmad-devel
 BuildRequires:	libvorbis-devel
 BuildRequires:	mpeg2dec-devel
-BuildRequires:	SDL-devel >= 1.2.2
+%ifarch %{ix86}
+BuildRequires:	nasm
+%endif
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -70,6 +73,9 @@ Zestaw narzêdzi mog±cych byæ u¿ytecznymi w po³±czeniu ze ScummVM.
 %build
 ./configure \
 	--disable-debug \
+%ifnarch %{ix86}
+	--disable-nasm \
+%endif
 	--enable-kyra
 
 %{__make} \
