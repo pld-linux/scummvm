@@ -1,12 +1,12 @@
 Summary:	SCUMM graphic adventure game interpreter
 Summary(pl):	Interpreter przygodówek opartych na SCUMM
 Name:		scummvm
-Version:	0.3.0b
+Version:	0.4.0
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
-Source0:	http://telia.dl.sourceforge.net/sourceforge/scummvm/%{name}_%{version}-src.tar.bz2
-Source1:	%{name}_tools_%{version}-src.tar.bz2
+Source0:	http://dl.sf.net/scummvm/%{name}-%{version}.tar.bz2
+Source1:	http://dl.sf.net/scummvm/%{name}-tools-%{version}.tar.bz2
 Source2:	%{name}.desktop
 Source3:	%{name}.png
 Patch0:		%{name}-makefile.patch
@@ -14,7 +14,6 @@ BuildRequires:	libvorbis-devel
 BuildRequires:	mad-devel
 BuildRequires:	SDL-devel >= 1.2.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
 
 %description
 ScummVM is an implementation of the SCUMM (Script Creation Utility for
@@ -50,7 +49,7 @@ SCUMM tools.
 Narzêdzia zwi±zane ze SCUMM.
 
 %prep
-%setup -q -a 1 -n %{name}-0.3.0
+%setup -q -a 1
 %patch0 -p1
 
 %build
@@ -59,7 +58,7 @@ Narzêdzia zwi±zane ze SCUMM.
 	CFLAGS="%{rpmcflags}" \
 	LDFLAGS="%{rpmldflags}"
 
-cd tools
+cd %{name}-tools-%{version}
 %{__make} \
 	CC="%{__cc}" \
 	CFLAGS="%{rpmcflags}" \
@@ -72,8 +71,10 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man6,%{_pixmapsdir},%{_applnkdi
 install scummvm $RPM_BUILD_ROOT%{_bindir}
 install scummvm.6 $RPM_BUILD_ROOT%{_mandir}/man6
 
-install tools/{descumm{3,5,6},rescumm,simon2mp3} $RPM_BUILD_ROOT%{_bindir}
-install tools/extract $RPM_BUILD_ROOT%{_bindir}/extract-scummvm
+cd %{name}-tools-%{version}
+install {descumm{,6},rescumm,simon2mp3} $RPM_BUILD_ROOT%{_bindir}
+install extract $RPM_BUILD_ROOT%{_bindir}/extract-scummvm
+cd -
 
 install %{SOURCE2} $RPM_BUILD_ROOT%{_applnkdir}/Games
 install %{SOURCE3} $RPM_BUILD_ROOT%{_pixmapsdir}
@@ -91,8 +92,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files tools
 %defattr(644,root,root,755)
-%doc tools/README
-%attr(755,root,root) %{_bindir}/descumm*
-%attr(755,root,root) %{_bindir}/extract-scummvm
-%attr(755,root,root) %{_bindir}/rescumm
-%attr(755,root,root) %{_bindir}/simon2mp3
+%doc %{name}-tools-%{version}/README
+%attr(755,root,root) %{_bindir}/*
+%exclude %{_bindir}/scummvm
