@@ -2,16 +2,17 @@
 Summary:	SCUMM graphic adventure game interpreter
 Summary(pl):	Interpreter przygodówek opartych na SCUMM
 Name:		scummvm
-Version:	0.7.0
-Release:	2
+Version:	0.7.1
+Release:	1
 License:	GPL
 Group:		X11/Applications/Games
-Source0:	http://dl.sourceforge.net/scummvm/%{name}-%{version}.tar.bz2
-# Source0-md5:	7e2f9bc1bc54aa78285f7f3189ee8a7c
+Source0:	http://belnet.dl.sourceforge.net/scummvm/%{name}-%{version}.tar.bz2
+# Source0-md5:	a935499011c59441fcce8322ea1c4f1d
 Source1:	http://dl.sourceforge.net/scummvm/%{name}-tools-%{version_tools}.tar.bz2
 # Source1-md5:	eeebbd4e309a8564dd911d5c26fed2f0
 Source2:	%{name}.desktop
 Source3:	%{name}.png
+Patch0:		%{name}-asm.patch
 URL:		http://scummvm.sourceforge.net/
 BuildRequires:	SDL-devel >= 1.2.2
 BuildRequires:	libmad-devel
@@ -69,6 +70,9 @@ Zestaw narzêdzi mog±cych byæ u¿ytecznymi w po³±czeniu ze ScummVM.
 
 %prep
 %setup -q -a 1
+%patch0 -p1
+
+sed -i -e 's:(name "/lib" name ".so"):("%{_libdir}/lib" name ".so"):' base/plugins.cpp
 
 %build
 ./configure \
@@ -76,11 +80,12 @@ Zestaw narzêdzi mog±cych byæ u¿ytecznymi w po³±czeniu ze ScummVM.
 %ifnarch %{ix86}
 	--disable-nasm \
 %endif
-	--enable-kyra
+	--enable-kyra \
+	--enable-plugins
 
 %{__make} \
 	CXX="%{__cxx}" \
-	CXXFLAGS="%{rpmcflags}" \
+	CXXFLAGS="%{rpmcflags} -DDYNAMIC_MODULES -fpic" \
 	LDFLAGS="%{rpmldflags}"
 
 cd %{name}-tools-%{version_tools}
@@ -91,10 +96,15 @@ cd %{name}-tools-%{version_tools}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man6,%{_pixmapsdir},%{_desktopdir}}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man6,%{_pixmapsdir},%{_desktopdir},%{_libdir}}
 
 install scummvm $RPM_BUILD_ROOT%{_bindir}
 install scummvm.6 $RPM_BUILD_ROOT%{_mandir}/man6
+
+for i in kyra queen scumm sky sword{1,2} simon
+do
+	install $i/lib$i.so $RPM_BUILD_ROOT%{_libdir}
+done
 
 cd %{name}-tools-%{version_tools}
 install compress_san	$RPM_BUILD_ROOT%{_bindir}
@@ -125,6 +135,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc NEWS README TODO
 %attr(755,root,root) %{_bindir}/scummvm
+%attr(755,root,root) %{_libdir}/*
 %{_mandir}/man6/*
 %{_pixmapsdir}/*
 %{_desktopdir}/*
