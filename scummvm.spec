@@ -2,14 +2,16 @@
 # TODO:
 # - add desktop file and png icon.
 #
+%define		_snap	20020801
 Summary:	SCUMM graphic adventure game interpreter
 Summary(pl):	Interpreter przygodówek opartych na SCUMM
 Name:		scummvm
-Version:	0.2.0
+Version:	0.2.0.%{_snap}
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
-Source0:	http://telia.dl.sourceforge.net/sourceforge/scummvm/%{name}_%{version}-src.tgz
+Source0:	http://scummvm.sourceforge.net/daily/%{name}-%{_snap}.tar.bz2
+#Source0:	http://telia.dl.sourceforge.net/sourceforge/scummvm/%{name}_%{version}-src.tgz
 BuildRequires:	SDL-devel >= 1.2.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
