@@ -3,7 +3,7 @@ Summary:	SCUMM graphic adventure game interpreter
 Summary(pl):	Interpreter przygodówek opartych na SCUMM
 Name:		scummvm
 Version:	0.5.1
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	http://dl.sf.net/scummvm/%{name}-%{version}.tar.bz2
@@ -13,6 +13,7 @@ Source1:	http://dl.sf.net/scummvm/%{name}-tools-%{version_tools}.tar.bz2
 Source2:	%{name}.desktop
 Source3:	%{name}.png
 Patch0:		%{name}-makefile.patch
+URL:		http://scummvm.sourceforge.net/
 BuildRequires:	libvorbis-devel
 BuildRequires:	libmad-devel
 BuildRequires:	SDL-devel >= 1.2.2
@@ -69,7 +70,7 @@ cd %{name}-tools-%{version_tools}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man6,%{_pixmapsdir},%{_applnkdir}/Games}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man6,%{_pixmapsdir},%{_desktopdir}}
 
 install scummvm $RPM_BUILD_ROOT%{_bindir}
 install scummvm.6 $RPM_BUILD_ROOT%{_mandir}/man6
@@ -79,7 +80,7 @@ install {descumm{,6},rescumm,simon2mp3} $RPM_BUILD_ROOT%{_bindir}
 install extract $RPM_BUILD_ROOT%{_bindir}/extract-scummvm
 cd -
 
-install %{SOURCE2} $RPM_BUILD_ROOT%{_applnkdir}/Games
+install %{SOURCE2} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE3} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 %clean
@@ -91,7 +92,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/scummvm
 %{_mandir}/man6/*
 %{_pixmapsdir}/*
-%{_applnkdir}/*
+%{_desktopdir}/*
 
 %files tools
 %defattr(644,root,root,755)
