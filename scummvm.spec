@@ -1,22 +1,24 @@
-%define		version_tools	0.5.0
+%define		version_tools	0.6.0
 Summary:	SCUMM graphic adventure game interpreter
 Summary(pl):	Interpreter przygodówek opartych na SCUMM
 Name:		scummvm
-Version:	0.5.1
-Release:	2
+Version:	0.6.0
+Release:	1
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
-# Source0-md5:	67bdbe2e145b8072d0bac61f7ed150c0
+# Source0-md5:	efc4207a7f10b24e9fc5afa10ed9c455
 Source1:	http://dl.sourceforge.net/%{name}/%{name}-tools-%{version_tools}.tar.bz2
-# Source1-md5:	4d9d4821b2cac5225ac408f00a69c189
+# Source1-md5:	09ded7a8177fda1b861731052b8693c4
 Source2:	%{name}.desktop
 Source3:	%{name}.png
-Patch0:		%{name}-makefile.patch
+Patch0:		%{name}-gcc34.patch
 URL:		http://scummvm.sourceforge.net/
-BuildRequires:	libvorbis-devel
 BuildRequires:	libmad-devel
+BuildRequires:	libvorbis-devel
+BuildRequires:	mpeg2dec-devel
 BuildRequires:	SDL-devel >= 1.2.2
+BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -57,6 +59,9 @@ Narzêdzia zwi±zane ze SCUMM.
 %patch0 -p1
 
 %build
+./configure \
+	--disable-debug
+
 %{__make} \
 	CXX="%{__cxx}" \
 	CFLAGS="%{rpmcflags}" \
@@ -76,7 +81,7 @@ install scummvm $RPM_BUILD_ROOT%{_bindir}
 install scummvm.6 $RPM_BUILD_ROOT%{_mandir}/man6
 
 cd %{name}-tools-%{version_tools}
-install {descumm{,6},rescumm,simon2mp3} $RPM_BUILD_ROOT%{_bindir}
+install {descumm,rescumm,simon2mp3} $RPM_BUILD_ROOT%{_bindir}
 install extract $RPM_BUILD_ROOT%{_bindir}/extract-scummvm
 cd -
 
