@@ -1,20 +1,16 @@
-#
-# TODO:
-# - add desktop file and png icon. (when gui is ready)
-#
-%define		_snap		20021109
-%define		_toolsnap	20020919
 Summary:	SCUMM graphic adventure game interpreter
 Summary(pl):	Interpreter przygodówek opartych na SCUMM
 Name:		scummvm
-Version:	0.2.0.%{_snap}
+Version:	0.3.0b
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
-Source0:	%{name}-%{_snap}.tar.bz2
-#Source0:	http://telia.dl.sourceforge.net/sourceforge/scummvm/%{name}_%{version}-src.tgz
-Source1:	%{name}-tools-%{_toolsnap}.tar.bz2
-Patch0:		%{name}-lame.patch
+Source0:	http://telia.dl.sourceforge.net/sourceforge/scummvm/%{name}_%{version}-src.tar.bz2
+Source1:	%{name}_tools_%{version}-src.tar.bz2
+Source2:	%{name}.desktop
+Source3:	%{name}.png
+Patch0:		%{name}-makefile.patch
+BuildRequires:	libvorbis-devel
 BuildRequires:	mad-devel
 BuildRequires:	SDL-devel >= 1.2.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -56,7 +52,7 @@ SCUMM tools.
 Narzêdzia zwi±zane ze SCUMM.
 
 %prep
-%setup -q -a 1 -n %{name}
+%setup -q -a 1 -n %{name}-0.3.0
 %patch0 -p1
 
 %build
@@ -73,13 +69,16 @@ cd tools
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man6}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man6,%{_pixmapsdir},%{_applnkdir}/Games}
 
 install scummvm $RPM_BUILD_ROOT%{_bindir}
 install scummvm.6 $RPM_BUILD_ROOT%{_mandir}/man6
 
-install tools/{descumm{3,5,6},rescumm} $RPM_BUILD_ROOT%{_bindir}
+install tools/{descumm{3,5,6},rescumm,simon2mp3} $RPM_BUILD_ROOT%{_bindir}
 install tools/extract $RPM_BUILD_ROOT%{_bindir}/extract-scummvm
+
+install %{SOURCE2} $RPM_BUILD_ROOT%{_applnkdir}/Games
+install %{SOURCE3} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -89,10 +88,13 @@ rm -rf $RPM_BUILD_ROOT
 %doc NEWS README
 %attr(755,root,root) %{_bindir}/scummvm
 %{_mandir}/man6/*
+%{_pixmapsdir}/*
+%{_applnkdir}/*
 
 %files tools
 %defattr(644,root,root,755)
-%doc tools/readme.txt
+%doc tools/README
 %attr(755,root,root) %{_bindir}/descumm*
 %attr(755,root,root) %{_bindir}/extract-scummvm
 %attr(755,root,root) %{_bindir}/rescumm
+%attr(755,root,root) %{_bindir}/simon2mp3
