@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=scummvm
+Comment=SCUMM graphic adventure game interpreter
+Comment[pl]=Interpreter przygodówek opartych na SCUMM
+Icon=scummvm.png
+Exec=scummvm
+Terminal=0
+Type=Application
