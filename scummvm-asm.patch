@@ -1,0 +1,108 @@
+diff -ruN scummvm-0.7.1./backends/midi/mt32/i386.cpp scummvm-0.7.1/backends/midi/mt32/i386.cpp
+--- scummvm-0.7.1./backends/midi/mt32/i386.cpp	2004-11-14 05:13:14.000000000 +0100
++++ scummvm-0.7.1/backends/midi/mt32/i386.cpp	2005-03-29 02:25:25.897230560 +0200
+@@ -55,10 +55,20 @@
+ 
+ 	/* check cpuid */
+ 	__asm__ __volatile__(
++#ifdef __PIC__
++		"pushl  %%ebx            \n"
++#endif
+ 		"movl   $1, %%eax        \n" \
+ 		"cpuid                   \n" \
+-		"movl   %%edx, %0        \n" \
+-		: "=r"(result) : : "eax", "ebx", "ecx", "edx");
++		"movl   %%edx, %0        \n"
++#ifdef __PIC__
++		"popl   %%ebx            \n"
++#endif
++		: "=r"(result) : : "eax", "ecx", "edx"
++#ifndef __PIC__
++		, "ebx"
++#endif
++		);
+ 
+ 	if (result & (1 << 25))
+ 		return true;
+@@ -74,10 +84,21 @@
+ 
+ 	// get cpuid
+ 	__asm__ __volatile__(
++#ifdef __PIC__
++		"pushl  %%ebx              \n"
++#endif
+ 		"movl   $0x80000001, %%eax \n" \
+ 		"cpuid                     \n" \
+-		"movl   %%edx, %0          \n" \
+-		: "=r"(result) : : "eax", "ebx", "ecx", "edx");
++		"movl   %%edx, %0          \n"
++#ifdef __PIC__
++		"popl   %%ebx              \n"
++#endif
++		: "=r"(result) : : "eax", "ecx", "edx"
++#ifndef __PIC__
++		, "ebx"
++#endif
++
++		);
+ 
+ 	if (result & 0x80000000)
+ 		return true;
+@@ -148,6 +169,9 @@
+ 	float tmp;
+ 
+ 	__asm__ __volatile__ (
++#ifdef __PIC__
++		"pushl %%ebx          \n"
++#endif
+ 		"movq %0, %%mm1       \n" \
+ 		"                     \n" \
+ 		"movl  %1, %%ebx      \n" \
+@@ -208,9 +232,16 @@
+ 		"movd %%mm3, 4(%%eax) \n" \
+ 		"                     \n" \
+ 		"movd %%mm1, %0       \n" \
+-		"femms                \n" \
++		"femms                \n"
++#ifdef __PIC__
++		"popl %%ebx           \n"
++#endif
+ 		: "=m"(output) : "g"(coef_ptr), "g"(hist1_ptr), "m"(tmp)
+-		: "eax", "ebx", "mm1", "mm2", "mm3", "memory");
++		: "eax", "mm1", "mm2", "mm3", "memory"
++#ifndef __PIC__
++		, "ebx"
++#endif
++		);
+ 
+ 	return output;
+ }
+@@ -349,6 +380,9 @@
+ 
+ static inline void atti386_partialProductOutput(int quadlen, Bit16s leftvol, Bit16s rightvol, Bit16s *partialBuf, Bit16s *p1buf) {
+ 	__asm__ __volatile__(
++#ifdef __PIC__
++		"pushl %%ebx          \n"
++#endif
+ 		"movl %0, %%ecx       \n" \
+ 		"movw %1, %%ax        \n" \
+ 		"shll $16, %%eax      \n" \
+@@ -383,9 +417,16 @@
+ 		"decl %%ecx           \n" \
+ 		"cmpl $0, %%ecx       \n" \
+ 		"jg 1b                \n" \
+-		"emms                 \n"  \
++		"emms                 \n"
++#ifdef __PIC__
++		"popl %%ebx           \n"
++#endif
+ 		: : "g"(quadlen), "g"(leftvol), "g"(rightvol), "g"(partialBuf), "g"(p1buf)
+-		: "eax", "ebx", "ecx", "edx", "edi", "esi", "mm1", "mm2", "mm3", "memory");
++		: "eax", "ecx", "edx", "edi", "esi", "mm1", "mm2", "mm3", "memory"
++#ifndef __PIC__
++		, "ebx"
++#endif
++		);
+ }
+ 
+ #endif
