@@ -6,8 +6,6 @@ Version:	0.1.0
 Release:	0.%{snap}.1
 License:	GPL
 Group:		X11/Applications/Games
-Group(de):	X11/Applikationen/Spiele
-Group(pl):	X11/Aplikacje/Gry
 #Source0:	http://scummvm.sourceforge.net/daily/%{name}-%{snap}.tar.bz2
 Source0:	%{name}-%{snap}.tar.bz2
 Patch0:		%{name}-timidity.patch
