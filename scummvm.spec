@@ -1,13 +1,14 @@
+%define		version_tools	0.5.0
 Summary:	SCUMM graphic adventure game interpreter
 Summary(pl):	Interpreter przygodówek opartych na SCUMM
 Name:		scummvm
-Version:	0.5.0
+Version:	0.5.1
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	http://dl.sf.net/scummvm/%{name}-%{version}.tar.bz2
-# Source0-md5:	d8282c8ca4a11751991b00cca3f20e1e
-Source1:	http://dl.sf.net/scummvm/%{name}-tools-%{version}.tar.bz2
+# Source0-md5:	67bdbe2e145b8072d0bac61f7ed150c0
+Source1:	http://dl.sf.net/scummvm/%{name}-tools-%{version_tools}.tar.bz2
 # Source1-md5:	4d9d4821b2cac5225ac408f00a69c189
 Source2:	%{name}.desktop
 Source3:	%{name}.png
@@ -60,7 +61,7 @@ Narzêdzia zwi±zane ze SCUMM.
 	CFLAGS="%{rpmcflags}" \
 	LDFLAGS="%{rpmldflags}"
 
-cd %{name}-tools-%{version}
+cd %{name}-tools-%{version_tools}
 %{__make} \
 	CC="%{__cc}" \
 	CFLAGS="%{rpmcflags}" \
@@ -73,7 +74,7 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man6,%{_pixmapsdir},%{_applnkdi
 install scummvm $RPM_BUILD_ROOT%{_bindir}
 install scummvm.6 $RPM_BUILD_ROOT%{_mandir}/man6
 
-cd %{name}-tools-%{version}
+cd %{name}-tools-%{version_tools}
 install {descumm{,6},rescumm,simon2mp3} $RPM_BUILD_ROOT%{_bindir}
 install extract $RPM_BUILD_ROOT%{_bindir}/extract-scummvm
 cd -
@@ -94,6 +95,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files tools
 %defattr(644,root,root,755)
-%doc %{name}-tools-%{version}/README
+%doc %{name}-tools-%{version_tools}/README
 %attr(755,root,root) %{_bindir}/*
 %exclude %{_bindir}/scummvm
