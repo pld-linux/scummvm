@@ -7,5 +7,5 @@ Icon=scummvm.png
 Exec=scummvm
 Terminal=false
 Type=Application
-Categories=Application;System;Emulator;
+Categories=Game;AdventureGame;
 # vi: encoding=utf-8
