@@ -6,7 +6,7 @@ Version:	0.7.1
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
-Source0:	http://belnet.dl.sourceforge.net/scummvm/%{name}-%{version}.tar.bz2
+Source0:	http://dl.sourceforge.net/scummvm/%{name}-%{version}.tar.bz2
 # Source0-md5:	a935499011c59441fcce8322ea1c4f1d
 Source1:	http://dl.sourceforge.net/scummvm/%{name}-tools-%{version_tools}.tar.bz2
 # Source1-md5:	eeebbd4e309a8564dd911d5c26fed2f0
