@@ -1,8 +1,8 @@
 #
 # TODO:
-# - add desktop file and png icon.
+# - add desktop file and png icon. (when gui is ready)
 #
-%define		_snap	20020801
+%define		_snap	20020919
 Summary:	SCUMM graphic adventure game interpreter
 Summary(pl):	Interpreter przygodówek opartych na SCUMM
 Name:		scummvm
@@ -10,8 +10,10 @@ Version:	0.2.0.%{_snap}
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
-Source0:	http://scummvm.sourceforge.net/daily/%{name}-%{_snap}.tar.bz2
+Source0:	%{name}-%{_snap}.tar.bz2
 #Source0:	http://telia.dl.sourceforge.net/sourceforge/scummvm/%{name}_%{version}-src.tgz
+Source1:	%{name}-tools-%{_snap}.tar.bz2
+BuildRequires:	mad-devel
 BuildRequires:	SDL-devel >= 1.2.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -40,12 +42,29 @@ niekompatybilne pomiêdzy ró¿nymi wersjami ScummVM.
 ScummVM potrafi równie¿ obs³u¿yæ gry nie oparte na silniku SCUMM. W chwili
 obecnej jest to Simon The Sorcerer.
 
+%package tools
+Summary:	SCUMM tools
+Summary(pl):	Narzêdzia zwi±zane ze SCUMM
+Group:		X11/Applications/Games
+
+%description tools
+SCUMM tools.
+
+%description tools -l pl
+Narzêdzia zwi±zane ze SCUMM.
+
 %prep
-%setup -q -n %{name}
+%setup -q -a 1 -n %{name}
 
 %build
 %{__make} \
-	CC="%{__cxx}" \
+	CXX="%{__cxx}" \
+	CFLAGS="%{rpmcflags}" \
+	LDFLAGS="%{rpmldflags}"
+
+cd tools
+%{__make} \
+	CC="%{__cc}" \
 	CFLAGS="%{rpmcflags}" \
 	LDFLAGS="%{rpmldflags}"
 
@@ -56,11 +75,21 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man6}
 install scummvm $RPM_BUILD_ROOT%{_bindir}
 install scummvm.6 $RPM_BUILD_ROOT%{_mandir}/man6
 
+install tools/{descumm{3,5,6},rescumm} $RPM_BUILD_ROOT%{_bindir}
+install tools/extract $RPM_BUILD_ROOT%{_bindir}/extract-scummvm
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc readme.txt whatsnew.txt
-%attr(755,root,root) %{_bindir}/*
+%doc NEWS README debian/README.Debian
+%attr(755,root,root) %{_bindir}/scummvm
 %{_mandir}/man6/*
+
+%files tools
+%defattr(644,root,root,755)
+%doc tools/readme.txt
+%attr(755,root,root) %{_bindir}/descumm*
+%attr(755,root,root) %{_bindir}/extract-scummvm
+%attr(755,root,root) %{_bindir}/rescumm
