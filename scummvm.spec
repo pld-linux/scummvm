@@ -74,7 +74,7 @@ Zestaw narzêdzi mog±cych byæ u¿ytecznymi w po³±czeniu ze ScummVM.
 
 %{__make} \
 	CXX="%{__cxx}" \
-	CFLAGS="%{rpmcflags}" \
+	CXXFLAGS="%{rpmcflags}" \
 	LDFLAGS="%{rpmldflags}"
 
 cd %{name}-tools-%{version_tools}
