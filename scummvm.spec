@@ -6,9 +6,9 @@ Version:	0.7.0
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
-Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
+Source0:	http://heanet.dl.sourceforge.net/scummvm/%{name}-%{version}.tar.bz2
 # Source0-md5:	7e2f9bc1bc54aa78285f7f3189ee8a7c
-Source1:	http://dl.sourceforge.net/%{name}/%{name}-tools-%{version_tools}.tar.bz2
+Source1:	http://heanet.dl.sourceforge.net/scummvm/%{name}-tools-%{version_tools}.tar.bz2
 # Source1-md5:	eeebbd4e309a8564dd911d5c26fed2f0
 Source2:	%{name}.desktop
 Source3:	%{name}.png
