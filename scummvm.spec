@@ -13,6 +13,7 @@ Group:		X11/Applications/Games
 Source0:	%{name}-%{_snap}.tar.bz2
 #Source0:	http://telia.dl.sourceforge.net/sourceforge/scummvm/%{name}_%{version}-src.tgz
 Source1:	%{name}-tools-%{_snap}.tar.bz2
+Patch0:		%{name}-lame.patch
 BuildRequires:	mad-devel
 BuildRequires:	SDL-devel >= 1.2.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -55,6 +56,7 @@ Narzêdzia zwi±zane ze SCUMM.
 
 %prep
 %setup -q -a 1 -n %{name}
+%patch0 -p1
 
 %build
 %{__make} \
