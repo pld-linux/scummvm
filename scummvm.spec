@@ -1,3 +1,7 @@
+#
+# TODO:
+# - add desktop file and png icon.
+#
 Summary:	SCUMM graphic adventure game interpreter
 Summary(pl):	Interpreter przygodówek opartych na SCUMM
 Name:		scummvm
@@ -7,7 +11,6 @@ License:	GPL
 Group:		X11/Applications/Games
 Source0:	http://telia.dl.sourceforge.net/sourceforge/scummvm/%{name}_%{version}-src.tgz
 BuildRequires:	SDL-devel >= 1.2.2
-Requires:	SDL >= 1.2.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -46,8 +49,8 @@ obecnej jest to Simon The Sorcerer.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man6}
+
 install scummvm $RPM_BUILD_ROOT%{_bindir}
 install scummvm.6 $RPM_BUILD_ROOT%{_mandir}/man6
 
@@ -56,6 +59,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc readme.txt whatsnew.txt
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man6/*
-%doc readme.txt whatsnew.txt
