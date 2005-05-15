@@ -21,6 +21,7 @@ BuildRequires:	mpeg2dec-devel
 %ifarch %{ix86}
 BuildRequires:	nasm
 %endif
+BuildRequires:	sed >= 4.0
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
