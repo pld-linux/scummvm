@@ -1,20 +1,21 @@
-%define		version_tools	0.7.0
+%define		version_tools	0.8.0
 Summary:	SCUMM graphic adventure game interpreter
 Summary(pl):	Interpreter przygodówek opartych na SCUMM
 Name:		scummvm
-Version:	0.7.1
+Version:	0.8.0
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
-Source0:	http://dl.sourceforge.net/scummvm/%{name}-%{version}.tar.bz2
-# Source0-md5:	a935499011c59441fcce8322ea1c4f1d
-Source1:	http://dl.sourceforge.net/scummvm/%{name}-tools-%{version_tools}.tar.bz2
-# Source1-md5:	eeebbd4e309a8564dd911d5c26fed2f0
+Source0:	http://puzzle.dl.sourceforge.net/scummvm/%{name}-%{version}.tar.bz2
+# Source0-md5:	56bfbcfbe5adde42a2a9e3d6dc3d9068
+Source1:	http://puzzle.dl.sourceforge.net/scummvm/%{name}-tools-%{version_tools}.tar.bz2
+# Source1-md5:	cc7e13ea10acf692c10e90b9507074ed
 Source2:	%{name}.desktop
 Source3:	%{name}.png
-Patch0:		%{name}-asm.patch
+Patch0:		%{name}-copyprotection.patch
 URL:		http://scummvm.sourceforge.net/
 BuildRequires:	SDL-devel >= 1.2.2
+BuildRequires:	fluidsynth-devel
 BuildRequires:	libmad-devel
 BuildRequires:	libvorbis-devel
 BuildRequires:	mpeg2dec-devel
@@ -73,7 +74,7 @@ Zestaw narzêdzi mog±cych byæ u¿ytecznymi w po³±czeniu ze ScummVM.
 %setup -q -a 1
 %patch0 -p1
 
-sed -i -e 's:(name "/lib" name ".so"):("%{_libdir}/lib" name ".so"):' base/plugins.cpp
+sed -i -e 's:"plugins/":"%{_libdir}/scummvm/":' base/plugins.cpp
 
 %build
 ./configure \
@@ -89,7 +90,7 @@ sed -i -e 's:(name "/lib" name ".so"):("%{_libdir}/lib" name ".so"):' base/plugi
 	CXXFLAGS="%{rpmcflags} -DDYNAMIC_MODULES -fpic" \
 	LDFLAGS="%{rpmldflags}"
 
-cd %{name}-tools-%{version_tools}
+cd tools-%{version_tools}
 %{__make} \
 	CC="%{__cc}" \
 	CFLAGS="%{rpmcflags}" \
@@ -97,33 +98,32 @@ cd %{name}-tools-%{version_tools}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man6,%{_pixmapsdir},%{_desktopdir},%{_libdir}}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man6,%{_pixmapsdir},%{_desktopdir},%{_libdir}/scummvm}
 
 install scummvm $RPM_BUILD_ROOT%{_bindir}
 install scummvm.6 $RPM_BUILD_ROOT%{_mandir}/man6
 
-for i in kyra queen scumm sky sword{1,2} simon
-do
-	install $i/lib$i.so $RPM_BUILD_ROOT%{_libdir}
-done
+install plugins/lib*.so $RPM_BUILD_ROOT%{_libdir}/scummvm
 
-cd %{name}-tools-%{version_tools}
-install compress_san	$RPM_BUILD_ROOT%{_bindir}
-install convbdf		$RPM_BUILD_ROOT%{_bindir}
-install dekyra		$RPM_BUILD_ROOT%{_bindir}
-install descumm		$RPM_BUILD_ROOT%{_bindir}
-install desword2	$RPM_BUILD_ROOT%{_bindir}
-install extract		$RPM_BUILD_ROOT%{_bindir}/extract-scummvm
-install kyra_unpak	$RPM_BUILD_ROOT%{_bindir}
-install loom_tg16_extract	$RPM_BUILD_ROOT%{_bindir}
-install mm_nes_extract	$RPM_BUILD_ROOT%{_bindir}
-install queenrebuild	$RPM_BUILD_ROOT%{_bindir}
-install rescumm		$RPM_BUILD_ROOT%{_bindir}
-install saga2mp3	$RPM_BUILD_ROOT%{_bindir}
-install simon1decr	$RPM_BUILD_ROOT%{_bindir}
-install simon2mp3	$RPM_BUILD_ROOT%{_bindir}
-install sword1mp3	$RPM_BUILD_ROOT%{_bindir}
-install sword2mp3	$RPM_BUILD_ROOT%{_bindir}
+cd tools-%{version_tools}
+install compress_queen		$RPM_BUILD_ROOT%{_bindir}
+install compress_saga		$RPM_BUILD_ROOT%{_bindir}
+install compress_san		$RPM_BUILD_ROOT%{_bindir}
+install compress_scumm_bun	$RPM_BUILD_ROOT%{_bindir}
+install compress_scumm_sou	$RPM_BUILD_ROOT%{_bindir}
+install compress_simon		$RPM_BUILD_ROOT%{_bindir}
+install compress_sword1		$RPM_BUILD_ROOT%{_bindir}
+install compress_sword2		$RPM_BUILD_ROOT%{_bindir}
+install dekyra			$RPM_BUILD_ROOT%{_bindir}
+install descumm			$RPM_BUILD_ROOT%{_bindir}
+install desword2		$RPM_BUILD_ROOT%{_bindir}
+install extract_kyra		$RPM_BUILD_ROOT%{_bindir}
+install extract_loom_tg16	$RPM_BUILD_ROOT%{_bindir}
+install extract_mm_c64		$RPM_BUILD_ROOT%{_bindir}
+install extract_mm_nes		$RPM_BUILD_ROOT%{_bindir}
+install extract_scumm_mac	$RPM_BUILD_ROOT%{_bindir}
+install extract_simon1_amiga	$RPM_BUILD_ROOT%{_bindir}
+install extract_zak_c64		$RPM_BUILD_ROOT%{_bindir}
 cd -
 
 install %{SOURCE2} $RPM_BUILD_ROOT%{_desktopdir}
@@ -134,15 +134,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc NEWS README TODO
+%doc AUTHORS NEWS README TODO
 %attr(755,root,root) %{_bindir}/scummvm
-%attr(755,root,root) %{_libdir}/*
+%{_libdir}/scummvm
 %{_mandir}/man6/*
 %{_pixmapsdir}/*
 %{_desktopdir}/*
 
 %files tools
 %defattr(644,root,root,755)
-%doc %{name}-tools-%{version_tools}/README
+%doc tools-%{version_tools}/README
 %attr(755,root,root) %{_bindir}/*
 %exclude %{_bindir}/scummvm
