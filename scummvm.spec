@@ -6,9 +6,9 @@ Version:	0.8.0
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
-Source0:	http://puzzle.dl.sourceforge.net/scummvm/%{name}-%{version}.tar.bz2
+Source0:	http://dl.sourceforge.net/scummvm/%{name}-%{version}.tar.bz2
 # Source0-md5:	56bfbcfbe5adde42a2a9e3d6dc3d9068
-Source1:	http://puzzle.dl.sourceforge.net/scummvm/%{name}-tools-%{version_tools}.tar.bz2
+Source1:	http://dl.sourceforge.net/scummvm/%{name}-tools-%{version_tools}.tar.bz2
 # Source1-md5:	cc7e13ea10acf692c10e90b9507074ed
 Source2:	%{name}.desktop
 Source3:	%{name}.png
