@@ -1,18 +1,23 @@
+# TODO:
+#  - include gui/themes/modern* and teach scummvm to search
+#    for it in some system paths, not current dir
+#
 %define		version_tools	0.8.0
+%define		_snap	20060522
 Summary:	SCUMM graphic adventure game interpreter
 Summary(pl):	Interpreter przygodówek opartych na SCUMM
 Name:		scummvm
-Version:	0.8.0
-Release:	1
+Version:	0.9.0
+Release:	0.%{_snap}
 License:	GPL
 Group:		X11/Applications/Games
-Source0:	http://dl.sourceforge.net/scummvm/%{name}-%{version}.tar.bz2
-# Source0-md5:	56bfbcfbe5adde42a2a9e3d6dc3d9068
+#Source0:	http://dl.sourceforge.net/scummvm/%{name}-%{version}.tar.bz2
+Source0:	http://www.scummvm.org/daily/%{name}-%{_snap}.tar.bz2
+# Source0-md5:	05999b9b57f8b1aad720dcf797589318
 Source1:	http://dl.sourceforge.net/scummvm/%{name}-tools-%{version_tools}.tar.bz2
 # Source1-md5:	cc7e13ea10acf692c10e90b9507074ed
 Source2:	%{name}.desktop
 Source3:	%{name}.png
-Patch0:		%{name}-copyprotection.patch
 URL:		http://scummvm.sourceforge.net/
 BuildRequires:	SDL-devel >= 1.2.2
 BuildRequires:	fluidsynth-devel
@@ -71,8 +76,7 @@ with ScummVM.
 Zestaw narzêdzi mog±cych byæ u¿ytecznymi w po³±czeniu ze ScummVM.
 
 %prep
-%setup -q -a 1
-%patch0 -p1
+%setup -q -n %{name} -a 1
 
 sed -i -e 's:"plugins/":"%{_libdir}/scummvm/":' base/plugins.cpp
 
@@ -82,7 +86,8 @@ sed -i -e 's:"plugins/":"%{_libdir}/scummvm/":' base/plugins.cpp
 %ifnarch %{ix86}
 	--disable-nasm \
 %endif
-	--enable-kyra \
+	--enable-lure \
+	--enable-cine \
 	--enable-plugins
 
 %{__make} \
@@ -101,7 +106,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man6,%{_pixmapsdir},%{_desktopdir},%{_libdir}/scummvm}
 
 install scummvm $RPM_BUILD_ROOT%{_bindir}
-install scummvm.6 $RPM_BUILD_ROOT%{_mandir}/man6
+#install scummvm.6 $RPM_BUILD_ROOT%{_mandir}/man6
 
 install plugins/lib*.so $RPM_BUILD_ROOT%{_libdir}/scummvm
 
@@ -137,7 +142,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS NEWS README TODO
 %attr(755,root,root) %{_bindir}/scummvm
 %{_libdir}/scummvm
-%{_mandir}/man6/*
+#%{_mandir}/man6/*
 %{_pixmapsdir}/*
 %{_desktopdir}/*
 
