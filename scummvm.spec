@@ -18,7 +18,9 @@ Source2:	%{name}.desktop
 Source3:	%{name}.png
 URL:		http://scummvm.sourceforge.net/
 BuildRequires:	SDL-devel >= 1.2.2
+%ifarch %{ix86} %{x8664}
 BuildRequires:	fluidsynth-devel
+%endif
 BuildRequires:	libmad-devel
 BuildRequires:	libvorbis-devel
 BuildRequires:	mpeg2dec-devel
