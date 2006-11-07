@@ -146,7 +146,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/scummvm
 #%{_mandir}/man6/*
 %{_pixmapsdir}/*
-%{_desktopdir}/*
+%{_desktopdir}/*.desktop
 
 %files tools
 %defattr(644,root,root,755)
