@@ -31,6 +31,8 @@ BuildRequires:	sed >= 4.0
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+%define		specflags_sparc	-fPIC
+
 %description
 ScummVM is a collection of interpreters, capable of emulating several
 adventure game engines. ScummVM mainly supports games created using
