@@ -4,7 +4,7 @@
 #
 %define		version_tools	0.9.0
 Summary:	SCUMM graphic adventure game interpreter
-Summary(pl):	Interpreter przygodówek opartych na SCUMM
+Summary(pl.UTF-8):   Interpreter przygodÃ³wek opartych na SCUMM
 Name:		scummvm
 Version:	0.9.1
 Release:	1
@@ -49,33 +49,33 @@ under heavy development. Be aware that whilst we attempt to make sure
 that many games can be completed with few major bugs, crashes can
 happen.
 
-%description -l pl
-ScummVM jest zbiorem interpreterów zdolnych do emulacji kilku silników
-gier przygodowych. ScummVM g³ównie wspiera gry stworzone z u¿yciem
-silnika SCUMM (Script Creation Utility for Maniac Mansion), u¿ywanego
-przez takie tytu³y stworzone przez Lucas Arts jak Monkey Island, Day
+%description -l pl.UTF-8
+ScummVM jest zbiorem interpreterÃ³w zdolnych do emulacji kilku silnikÃ³w
+gier przygodowych. ScummVM gÅ‚Ã³wnie wspiera gry stworzone z uÅ¼yciem
+silnika SCUMM (Script Creation Utility for Maniac Mansion), uÅ¼ywanego
+przez takie tytuÅ‚y stworzone przez Lucas Arts jak Monkey Island, Day
 of the Tentacle.
 
-ScummVM potrafi równie¿ interpretowaæ kilka gier nie opartych na
-SCUMM. W chwili obecnej s± to Beneath a Steel Sky, Broken Sword 1 i 2,
+ScummVM potrafi rÃ³wnieÅ¼ interpretowaÄ‡ kilka gier nie opartych na
+SCUMM. W chwili obecnej sÄ… to Beneath a Steel Sky, Broken Sword 1 i 2,
 Flight of the Amazon Queen oraz Simon the Sorcerer 1 i 2.
 
-ScummVM jest ca³y czas intensywnie rozwijany i powinien byæ traktowany
-jako program w stanie beta. Wiele gier powinno daæ siê skoñczyæ bez
-wiêkszych b³êdów, nale¿y byæ jednak ¶wiadomym, ¿e program mo¿e siê
-czasem wysypaæ.
+ScummVM jest caÅ‚y czas intensywnie rozwijany i powinien byÄ‡ traktowany
+jako program w stanie beta. Wiele gier powinno daÄ‡ siÄ™ skoÅ„czyÄ‡ bez
+wiÄ™kszych bÅ‚Ä™dÃ³w, naleÅ¼y byÄ‡ jednak Å›wiadomym, Å¼e program moÅ¼e siÄ™
+czasem wysypaÄ‡.
 
 %package tools
 Summary:	ScummVM tools
-Summary(pl):	Narzêdzia zwi±zane ze ScummVM
+Summary(pl.UTF-8):   NarzÄ™dzia zwiÄ…zane ze ScummVM
 Group:		X11/Applications/Games
 
 %description tools
 Collection of various tools that may be useful to use in conjunction
 with ScummVM.
 
-%description tools -l pl
-Zestaw narzêdzi mog±cych byæ u¿ytecznymi w po³±czeniu ze ScummVM.
+%description tools -l pl.UTF-8
+Zestaw narzÄ™dzi mogÄ…cych byÄ‡ uÅ¼ytecznymi w poÅ‚Ä…czeniu ze ScummVM.
 
 %prep
 %setup -q -a 1
