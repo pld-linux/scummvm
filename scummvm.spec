@@ -4,7 +4,7 @@
 #
 %define		version_tools	0.9.0
 Summary:	SCUMM graphic adventure game interpreter
-Summary(pl.UTF-8):   Interpreter przygodówek opartych na SCUMM
+Summary(pl.UTF-8):	Interpreter przygodówek opartych na SCUMM
 Name:		scummvm
 Version:	0.9.1
 Release:	1
@@ -67,7 +67,7 @@ czasem wysypać.
 
 %package tools
 Summary:	ScummVM tools
-Summary(pl.UTF-8):   Narzędzia związane ze ScummVM
+Summary(pl.UTF-8):	Narzędzia związane ze ScummVM
 Group:		X11/Applications/Games
 
 %description tools
