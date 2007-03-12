@@ -94,7 +94,7 @@ sed -i -e 's:"plugins/":"%{_libdir}/scummvm/":' base/plugins.cpp
 
 %{__make} \
 	CXX="%{__cxx}" \
-%ifnarch sparc sparc64
+%ifarch sparc sparc32 sparc64
 	CXXFLAGS="%{rpmcflags} -DDYNAMIC_MODULES" \
 %else
 	CXXFLAGS="%{rpmcflags} -DDYNAMIC_MODULES -fpic" \
