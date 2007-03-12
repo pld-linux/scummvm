@@ -1,0 +1,3 @@
+- added flac-1.1.3 patch
+- hopefully fixed sparc (it distinguish between -fpic and -fPIC)
+- release 2
