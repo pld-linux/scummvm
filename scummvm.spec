@@ -7,7 +7,7 @@ Summary:	SCUMM graphic adventure game interpreter
 Summary(pl):	Interpreter przygodówek opartych na SCUMM
 Name:		scummvm
 Version:	0.9.1
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	http://dl.sourceforge.net/scummvm/%{name}-%{version}.tar.bz2
@@ -16,6 +16,7 @@ Source1:	http://dl.sourceforge.net/scummvm/%{name}-tools-%{version_tools}.tar.bz
 # Source1-md5:	c8164fa1cca90b1c3bff1c8949d875a3
 Source2:	%{name}.desktop
 Source3:	%{name}.png
+Patch0:		%{name}-flac.patch
 URL:		http://scummvm.sourceforge.net/
 BuildRequires:	SDL-devel >= 1.2.2
 %ifarch %{ix86} %{x8664}
@@ -30,8 +31,6 @@ BuildRequires:	nasm
 BuildRequires:	sed >= 4.0
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		specflags_sparc	-fPIC
 
 %description
 ScummVM is a collection of interpreters, capable of emulating several
@@ -79,6 +78,7 @@ Zestaw narzêdzi mog±cych byæ u¿ytecznymi w po³±czeniu ze ScummVM.
 
 %prep
 %setup -q -a 1
+%patch0 -p1
 
 sed -i -e 's:"plugins/":"%{_libdir}/scummvm/":' base/plugins.cpp
 
@@ -94,7 +94,11 @@ sed -i -e 's:"plugins/":"%{_libdir}/scummvm/":' base/plugins.cpp
 
 %{__make} \
 	CXX="%{__cxx}" \
+%ifnarch sparc sparc64
+	CXXFLAGS="%{rpmcflags} -DDYNAMIC_MODULES" \
+%else
 	CXXFLAGS="%{rpmcflags} -DDYNAMIC_MODULES -fpic" \
+%endif
 	LDFLAGS="%{rpmldflags}"
 
 cd tools-%{version_tools}
