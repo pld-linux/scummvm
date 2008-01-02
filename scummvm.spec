@@ -93,10 +93,24 @@ Group:		X11/Applications/Games
 %description engine-agos
 The AGOS Engine was originally created by Alan Cox at HorrorSoft and
 is based on AberMUD V, with graphical extensions.
+Required for following games:
+- Elvira
+- Elvira 2
+- Waxworks
+- Simon the Sorcerer
+- Simon the Sorcerer 2
+- The Feeble Files
 
 %description engine-agos -l pl.UTF-8
 Silnik AGOS został stworzony przez Alana Coksa w firmie HorrorSoft,
 bazowany jest na programie AberMUD V z graficznymi rozszerzeniami.
+Używany w następujących grach:
+- Elvira
+- Elvira 2
+- Waxworks
+- Simon the Sorcerer
+- Simon the Sorcerer 2
+- The Feeble Files
 
 %package engine-cine
 Summary:	Cinematique engine
