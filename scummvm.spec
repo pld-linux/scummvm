@@ -1,13 +1,9 @@
-# TODO:
-#  - include gui/themes/modern* and teach scummvm to search
-#    for it in some system paths, not current dir
-#
 %define		version_tools	0.10.0
 Summary:	Graphic adventure game interpreter
 Summary(pl.UTF-8):	Interpreter gier przygodowych
 Name:		scummvm
 Version:	0.10.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	http://dl.sourceforge.net/scummvm/%{name}-%{version}.tar.bz2
@@ -255,6 +251,17 @@ Musketeer.
 Ten silnik jest używany tylko przez Touché: Przygody Piątego
 Muszkietera.
 
+%package theme-modern
+Summary:	Theme modern for ScummVM
+Summary(pl.UTF-8):	Motyw modern dla ScummVM
+Group:		X11/Applications/Games
+
+%description theme-modern
+Theme modern for ScummVM.
+
+%description theme-modern -l pl.UTF-8
+Motyw modern dla ScummVM.
+
 %prep
 %setup -q -a 1
 
@@ -319,6 +326,10 @@ cd -
 install %{SOURCE2} $RPM_BUILD_ROOT%{_desktopdir}
 install icons/%{name}.svg $RPM_BUILD_ROOT%{_pixmapsdir}
 
+install -d $RPM_BUILD_ROOT%{_datadir}/%{name}
+install gui/themes/modern.ini $RPM_BUILD_ROOT%{_datadir}/%{name}
+install gui/themes/modern.zip $RPM_BUILD_ROOT%{_datadir}/%{name}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -330,6 +341,7 @@ rm -rf $RPM_BUILD_ROOT
 #%{_mandir}/man6/*
 %{_pixmapsdir}/*
 %{_desktopdir}/*.desktop
+%dir %{_datadir}/%{name}
 
 %files tools
 %defattr(644,root,root,755)
@@ -396,3 +408,7 @@ rm -rf $RPM_BUILD_ROOT
 %files engine-touche
 %defattr(644,root,root,755)
 %dir %{_libdir}/scummvm/libtouche.so
+
+%files theme-modern
+%defattr(644,root,root,755)
+%{_datadir}/%{name}/modern.*
