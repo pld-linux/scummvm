@@ -1,15 +1,15 @@
-%define		version_tools	0.10.0
+%define		version_tools	0.11.0
 Summary:	Graphic adventure game interpreter
 Summary(pl.UTF-8):	Interpreter gier przygodowych
 Name:		scummvm
-Version:	0.10.0
-Release:	2
+Version:	0.11.0
+Release:	1
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	http://dl.sourceforge.net/scummvm/%{name}-%{version}.tar.bz2
-# Source0-md5:	398bbd5616a54aae8dbe7d9e6c55f064
+# Source0-md5:	5066301a182b7e0f1da1eec21c80024f
 Source1:	http://dl.sourceforge.net/scummvm/%{name}-tools-%{version_tools}.tar.bz2
-# Source1-md5:	c72250ad730243d43cf2d1aea0428acd
+# Source1-md5:	13dbc307fb88604e3ad6ba6ae15719fc
 Source2:	%{name}.desktop
 URL:		http://scummvm.org/
 BuildRequires:	SDL-devel >= 1.2.2
@@ -134,6 +134,17 @@ Cruise engine.
 %description engine-cruise -l pl.UTF-8
 Silnik Cruise.
 
+%package engine-drascula
+Summary:	Drascula engine
+Summary(pl.UTF-8):	Silnik Drascula
+Group:		X11/Applications/Games
+
+%description engine-drascula
+Drascula engine.
+
+%description engine-drascula -l pl.UTF-8
+Silnik Drascula.
+
 %package engine-gob
 Summary:	Gob engine
 Summary(pl.UTF-8):	Silnik Gob
@@ -144,6 +155,17 @@ Engine to run adventure games created by Coktel Vision.
 
 %description engine-gob -l pl.UTF-8
 Silnik do uruchamiania gier stworzonych przez Coktel Vision.
+
+%package engine-igor
+Summary:	Igor engine
+Summary(pl.UTF-8):	Silnik Igor
+Group:		X11/Applications/Games
+
+%description engine-igor
+Igor engine.
+
+%description engine-igor -l pl.UTF-8
+Silnik Igor.
 
 %package engine-kyra
 Summary:	Kyrandia engine
@@ -287,8 +309,9 @@ sed -i -e 's:"plugins/":"%{_libdir}/scummvm/":' backends/plugins/sdl/sdl-provide
 	--prefix=/usr \
 	--disable-debug \
 	--disable-nasm \
-	--enable-lure \
 	--enable-cruise \
+	--enable-drascula \
+	--enable-igor \
 	--enable-plugins
 
 %{__make} \
@@ -379,9 +402,17 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %dir %{_libdir}/scummvm/libcruise.so
 
+%files engine-drascula
+%defattr(644,root,root,755)
+%dir %{_libdir}/scummvm/libdrascula.so
+
 %files engine-gob
 %defattr(644,root,root,755)
 %dir %{_libdir}/scummvm/libgob.so
+
+%files engine-igor
+%defattr(644,root,root,755)
+%dir %{_libdir}/scummvm/libigor.so
 
 %files engine-kyra
 %defattr(644,root,root,755)
