@@ -11,6 +11,7 @@ Source0:	http://dl.sourceforge.net/scummvm/%{name}-%{version}.tar.bz2
 Source1:	http://dl.sourceforge.net/scummvm/%{name}-tools-%{version_tools}.tar.bz2
 # Source1-md5:	af927a7cb59952ed869628250a916ab1
 Source2:	%{name}.desktop
+Patch0:		%{name}-wx-config.patch
 URL:		http://scummvm.org/
 BuildRequires:	SDL-devel >= 1.2.2
 BuildRequires:	wxWidgets-devel
@@ -301,6 +302,7 @@ Motyw modern dla ScummVM.
 
 %prep
 %setup -q -a 1
+%patch0 -p1
 
 sed -i -e 's:"plugins/":"%{_libdir}/scummvm/":' backends/plugins/posix/posix-provider.cpp
 sed -i -e 's:"plugins/":"%{_libdir}/scummvm/":' backends/plugins/sdl/sdl-provider.cpp
@@ -313,18 +315,19 @@ sed -i -e 's:"plugins/":"%{_libdir}/scummvm/":' backends/plugins/sdl/sdl-provide
 	--enable-cruise \
 	--enable-drascula \
 	--enable-igor \
-	--enable-plugins
+	--enable-plugins \
+	--default-dynamic
 
 %{__make} \
 	CXX="%{__cxx}" \
-	CXXFLAGS="%{rpmcflags} -DDYNAMIC_MODULES -fpic $(wx-gtk2-unicode-config --cflags)" \
+	CXXFLAGS="%{rpmcflags} -DDYNAMIC_MODULES -fpic $(wx-gtk2-unicode-config --cppflags)" \
 	LDFLAGS="%{rpmldflags}"
 
 cd scummvm-tools-%{version_tools}
 %{__make} \
-	CC="%{__cc}" \
-	CFLAGS="%{rpmcflags} -DUNIX $(wx-gtk2-unicode-config --cflags)" \
-	LDFLAGS="%{rpmldflags}"
+	CXX="%{__cxx}" \
+	CXXFLAGS="%{rpmcflags} -DUNIX $(wx-gtk2-unicode-config --cppflags)" \
+	LDFLAGS="%{rpmldflags} $(wx-gtk2-unicode-config --libs)"
 
 %install
 rm -rf $RPM_BUILD_ROOT
