@@ -1,18 +1,19 @@
-%define		version_tools	0.11.0
+%define		version_tools	0.12.0
 Summary:	Graphic adventure game interpreter
 Summary(pl.UTF-8):	Interpreter gier przygodowych
 Name:		scummvm
-Version:	0.11.1
+Version:	0.12.0
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	http://dl.sourceforge.net/scummvm/%{name}-%{version}.tar.bz2
-# Source0-md5:	8dc9eb9d18574a7ecfa6586892e0de4e
+# Source0-md5:	cd5620c57645948c8da0d4d9c9fcffb3
 Source1:	http://dl.sourceforge.net/scummvm/%{name}-tools-%{version_tools}.tar.bz2
-# Source1-md5:	13dbc307fb88604e3ad6ba6ae15719fc
+# Source1-md5:	af927a7cb59952ed869628250a916ab1
 Source2:	%{name}.desktop
 URL:		http://scummvm.org/
 BuildRequires:	SDL-devel >= 1.2.2
+BuildRequires:	wxWidgets-devel
 %ifarch %{ix86} %{x8664}
 BuildRequires:	fluidsynth-devel
 %endif
@@ -316,13 +317,13 @@ sed -i -e 's:"plugins/":"%{_libdir}/scummvm/":' backends/plugins/sdl/sdl-provide
 
 %{__make} \
 	CXX="%{__cxx}" \
-	CXXFLAGS="%{rpmcflags} -DDYNAMIC_MODULES -fpic" \
+	CXXFLAGS="%{rpmcflags} -DDYNAMIC_MODULES -fpic $(wx-gtk2-unicode-config --cflags)" \
 	LDFLAGS="%{rpmldflags}"
 
 cd scummvm-tools-%{version_tools}
 %{__make} \
 	CC="%{__cc}" \
-	CFLAGS="%{rpmcflags} -DUNIX" \
+	CFLAGS="%{rpmcflags} -DUNIX $(wx-gtk2-unicode-config --cflags)" \
 	LDFLAGS="%{rpmldflags}"
 
 %install
