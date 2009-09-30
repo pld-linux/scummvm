@@ -4,7 +4,7 @@ Summary:	Graphic adventure game interpreter
 Summary(pl.UTF-8):	Interpreter gier przygodowych
 Name:		scummvm
 Version:	1.0.0
-Release:	0.%{pre}.0.2
+Release:	0.%{pre}.1
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	http://dl.sourceforge.net/scummvm/%{name}-%{version}%{pre}.tar.bz2
@@ -210,8 +210,8 @@ Lure is the engine for the game Lure of the Temptress.
 Lure jest silnikiem dla gry Lure of the Temptress.
 
 %package engine-m4
-Summary:	M4 engine
-Summary(pl.UTF-8):	Silnik M4
+Summary:	M4/MADS engine
+Summary(pl.UTF-8):	Silnik M4/MADS
 Group:		X11/Applications/Games
 
 %description engine-m4
