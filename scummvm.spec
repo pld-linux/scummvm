@@ -1,29 +1,34 @@
-%define		version_tools	0.12.0
+%define		version_tools	1.0.0rc1
+%define		pre	rc1
 Summary:	Graphic adventure game interpreter
 Summary(pl.UTF-8):	Interpreter gier przygodowych
 Name:		scummvm
-Version:	0.12.0
-Release:	1
+Version:	1.0.0
+Release:	0.%{pre}.0.2
 License:	GPL
 Group:		X11/Applications/Games
-Source0:	http://dl.sourceforge.net/scummvm/%{name}-%{version}.tar.bz2
-# Source0-md5:	cd5620c57645948c8da0d4d9c9fcffb3
+Source0:	http://dl.sourceforge.net/scummvm/%{name}-%{version}%{pre}.tar.bz2
+# Source0-md5:	f3fabedc7ff2424d6a4bc678229b22ce
 Source1:	http://dl.sourceforge.net/scummvm/%{name}-tools-%{version_tools}.tar.bz2
-# Source1-md5:	af927a7cb59952ed869628250a916ab1
+# Source1-md5:	3434770afa91a8eaf4fa31c9229d7686
 Source2:	%{name}.desktop
 Patch0:		%{name}-wx-config.patch
 URL:		http://scummvm.org/
 BuildRequires:	SDL-devel >= 1.2.2
-BuildRequires:	wxWidgets-devel
+BuildRequires:	alsa-lib-devel >= 0.9
+BuildRequires:	flac-devel >= 1.0.1
 %ifarch %{ix86} %{x8664}
 BuildRequires:	fluidsynth-devel
 %endif
 BuildRequires:	libmad-devel
 BuildRequires:	libvorbis-devel
-BuildRequires:	mpeg2dec-devel
+BuildRequires:	libmpeg2-devel >= 0.3.2
 %ifarch %{ix86}
-#BuildRequires:	nasm
+BuildRequires:	nasm
 %endif
+BuildRequires:	wxGTK2-unicode-devel
+BuildRequires:	wxWidgets-devel
+BuildRequires:	zlib-devel
 BuildRequires:	sed >= 4.0
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -158,6 +163,19 @@ Engine to run adventure games created by Coktel Vision.
 %description engine-gob -l pl.UTF-8
 Silnik do uruchamiania gier stworzonych przez Coktel Vision.
 
+%package engine-groovie
+Summary:	Groovie engine
+Summary(pl.UTF-8):	Silnik Groovie
+Group:		X11/Applications/Games
+
+%description engine-groovie
+Engine to run adventure games created by Trilobyte or
+Aftermath Media (The 7th Guest, The 11th Hour).
+
+%description engine-groovie -l pl.UTF-8
+Silnik do uruchamiania gier stworzonych przez Trilobyte
+i Aftermath Media (The 7th Guest, The 11th Hour).
+
 %package engine-igor
 Summary:	Igor engine
 Summary(pl.UTF-8):	Silnik Igor
@@ -186,11 +204,40 @@ Summary(pl.UTF-8):	Silnik Lure
 Group:		X11/Applications/Games
 
 %description engine-lure
-Lure is the work-in-progress engine for the game Lure of the
-Temptress.
+Lure is the engine for the game Lure of the Temptress.
 
 %description engine-lure -l pl.UTF-8
-Lure jest nieskończonym silnikiem dla gry Lure of the Temptress.
+Lure jest silnikiem dla gry Lure of the Temptress.
+
+%package engine-m4
+Summary:	M4 engine
+Summary(pl.UTF-8):	Silnik M4
+Group:		X11/Applications/Games
+
+%description engine-m4
+MADS stands for the MicroProse Adventure Development System,
+used in the three adventure games they made. It was later sold
+to Sanctuary Woods, who continued development on it and named
+it M4 (MADS version 4 perhaps) and released two more games.
+
+%description engine-m4 -l pl.UTF-8
+MADS to MicroProse Adventure Development System, używany jest
+w trzech grach stworzonych przez MicroProse. Został sprzedany
+do Sanctuary Woods i dalej rozwijany jako M4.
+
+%package engine-made
+Summary:	MADE engine
+Summary(pl.UTF-8):	Silnik MADE
+Group:		X11/Applications/Games
+
+%description engine-made
+MADE stands for Multimedia Applications Development Environment,
+and was used by Activision to create some of their point'n'click
+adventure games. 
+
+%description engine-made -l pl.UTF-8
+MADE to Multimedia Applications Development Environment,
+był używany przez Activision w grach przygodowych.
 
 %package engine-parallaction
 Summary:	Parallaction engine
@@ -226,6 +273,17 @@ SAGA (Scripts for Animated Graphic Adventures) engine.
 
 %description engine-saga -l pl.UTF-8
 Silnik SAGA (Scripts for Animated Graphic Adventures).
+
+%package engine-sci
+Summary:	Sierra's "SCript Interpreter"
+Summary(pl.UTF-8):	SCript Interpreter Sierry
+Group:		X11/Applications/Games
+
+%description engine-sci
+Sierra's "SCript Interpreter" and the "Sierra's Creative Interpreter.
+
+%description engine-sci -l pl.UTF-8
+SCript Interpreter Sierry.
 
 %package engine-scumm
 Summary:	Script Creation Utility for Maniac Mansion
@@ -276,6 +334,18 @@ Sword2 engine.
 %description engine-sword2 -l pl.UTF-8
 Silnik Sword2.
 
+%package engine-tinsel
+Summary:	Tinsel engine
+Summary(pl.UTF-8):	Silnik Tinsel
+Group:		X11/Applications/Games
+
+%description engine-tinsel
+This engine is only used by Discworld 1 and Discworld 2.
+Musketeer.
+
+%description engine-tinsel -l pl.UTF-8
+Ten silnik jest używany tylko przez Discworld 1 i Discworld 2.
+
 %package engine-touche
 Summary:	Touche engine
 Summary(pl.UTF-8):	Silnik Touche
@@ -289,6 +359,28 @@ Musketeer.
 Ten silnik jest używany tylko przez Touché: Przygody Piątego
 Muszkietera.
 
+%package engine-tucker
+Summary:	Tucker engine
+Summary(pl.UTF-8):	Silnik Tucker
+Group:		X11/Applications/Games
+
+%description engine-tucker
+The Tucker engine is used in Bud Tucker in Double Trouble.
+
+%description engine-tucker -l pl.UTF-8
+Silnik Tucker jest używany przez Bud Tucker in Double Trouble.
+
+%package theme-classic
+Summary:	Theme classic for ScummVM
+Summary(pl.UTF-8):	Motyw classic dla ScummVM
+Group:		X11/Applications/Games
+
+%description theme-classic
+Theme classic for ScummVM.
+
+%description theme-classic -l pl.UTF-8
+Motyw classic dla ScummVM.
+
 %package theme-modern
 Summary:	Theme modern for ScummVM
 Summary(pl.UTF-8):	Motyw modern dla ScummVM
@@ -301,20 +393,17 @@ Theme modern for ScummVM.
 Motyw modern dla ScummVM.
 
 %prep
-%setup -q -a 1
+%setup -q -a 1 -n %{name}-%{version}%{pre}
 %patch0 -p1
 
-sed -i -e 's:"plugins/":"%{_libdir}/scummvm/":' backends/plugins/posix/posix-provider.cpp
-sed -i -e 's:"plugins/":"%{_libdir}/scummvm/":' backends/plugins/sdl/sdl-provider.cpp
+%{__sed} -i -e 's:"plugins":"%{_libdir}/scummvm":' base/plugins.cpp
 
 %build
 ./configure \
 	--prefix=/usr \
 	--disable-debug \
-	--disable-nasm \
-	--enable-cruise \
-	--enable-drascula \
-	--enable-igor \
+	--enable-mpeg2 \
+	--enable-all-engines \
 	--enable-plugins \
 	--default-dynamic
 
@@ -368,8 +457,7 @@ install %{SOURCE2} $RPM_BUILD_ROOT%{_desktopdir}
 install icons/%{name}.svg $RPM_BUILD_ROOT%{_pixmapsdir}
 
 install -d $RPM_BUILD_ROOT%{_datadir}/%{name}
-install gui/themes/modern.ini $RPM_BUILD_ROOT%{_datadir}/%{name}
-install gui/themes/modern.zip $RPM_BUILD_ROOT%{_datadir}/%{name}
+install gui/themes/*.zip $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -414,6 +502,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %dir %{_libdir}/scummvm/libgob.so
 
+%files engine-groovie
+%defattr(644,root,root,755)
+%dir %{_libdir}/scummvm/libgroovie.so
+
 %files engine-igor
 %defattr(644,root,root,755)
 %dir %{_libdir}/scummvm/libigor.so
@@ -426,6 +518,14 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %dir %{_libdir}/scummvm/liblure.so
 
+%files engine-m4
+%defattr(644,root,root,755)
+%dir %{_libdir}/scummvm/libm4.so
+
+%files engine-made
+%defattr(644,root,root,755)
+%dir %{_libdir}/scummvm/libmade.so
+
 %files engine-parallaction
 %defattr(644,root,root,755)
 %dir %{_libdir}/scummvm/libparallaction.so
@@ -437,6 +537,10 @@ rm -rf $RPM_BUILD_ROOT
 %files engine-saga
 %defattr(644,root,root,755)
 %dir %{_libdir}/scummvm/libsaga.so
+
+%files engine-sci
+%defattr(644,root,root,755)
+%dir %{_libdir}/scummvm/libsci.so
 
 %files engine-scumm
 %defattr(644,root,root,755)
@@ -454,10 +558,22 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %dir %{_libdir}/scummvm/libsword2.so
 
+%files engine-tinsel
+%defattr(644,root,root,755)
+%dir %{_libdir}/scummvm/libtinsel.so
+
 %files engine-touche
 %defattr(644,root,root,755)
 %dir %{_libdir}/scummvm/libtouche.so
 
+%files engine-tucker
+%defattr(644,root,root,755)
+%dir %{_libdir}/scummvm/libtucker.so
+
+%files theme-classic
+%defattr(644,root,root,755)
+%{_datadir}/%{name}/scummclassic.*
+
 %files theme-modern
 %defattr(644,root,root,755)
-%{_datadir}/%{name}/modern.*
+%{_datadir}/%{name}/scummmodern.*
