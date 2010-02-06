@@ -20,6 +20,7 @@ BuildRequires:	flac-devel >= 1.0.1
 BuildRequires:	fluidsynth-devel
 %endif
 BuildRequires:	libmad-devel
+BuildRequires:	libpng-devel
 BuildRequires:	libvorbis-devel
 BuildRequires:	libmpeg2-devel >= 0.3.2
 %ifarch %{ix86}
@@ -408,14 +409,14 @@ Motyw modern dla ScummVM.
 
 %{__make} \
 	CXX="%{__cxx}" \
-	CXXFLAGS="%{rpmcflags} -DDYNAMIC_MODULES -fpic $(wx-gtk2-unicode-config --cppflags)" \
-	LDFLAGS="%{rpmldflags}"
+	CXXFLAGS="%{rpmcppflags} %{rpmcflags} -DDYNAMIC_MODULES -fpic $(wx-gtk2-unicode-config --cppflags)" \
+	LDFLAGS="%{rpmcflags} %{rpmldflags}"
 
 cd scummvm-tools-%{version_tools}
 %{__make} \
 	CXX="%{__cxx}" \
-	CXXFLAGS="%{rpmcflags} -DUNIX $(wx-gtk2-unicode-config --cppflags)" \
-	LDFLAGS="%{rpmldflags} $(wx-gtk2-unicode-config --libs)"
+	CXXFLAGS="%{rpmcppflags} %{rpmcflags} -DUNIX $(wx-gtk2-unicode-config --cppflags)" \
+	LDFLAGS="%{rpmcflags} %{rpmldflags} $(wx-gtk2-unicode-config --libs)"
 
 %install
 rm -rf $RPM_BUILD_ROOT
