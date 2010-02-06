@@ -1,5 +1,5 @@
---- scummvm-1.0.0rc1/scummvm-tools-1.0.0rc1/Makefile	2009-09-30 11:45:38.477143239 +0200
-+++ scummvm-1.0.0rc1/scummvm-tools-1.0.0rc1/Makefile~	2009-08-23 15:44:34.000000000 +0200
+--- scummvm-1.0.0rc1/scummvm-tools-1.0.0/Makefile	2009-09-30 11:45:38.477143239 +0200
++++ scummvm-1.0.0rc1/scummvm-tools-1.0.0/Makefile~	2009-08-23 15:44:34.000000000 +0200
 @@ -212,7 +212,7 @@
  	$(CXX) $(LDFLAGS) `freetype-config --libs` -o $@ $+
  

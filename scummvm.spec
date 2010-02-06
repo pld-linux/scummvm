@@ -1,16 +1,15 @@
-%define		version_tools	1.0.0rc1
-%define		pre	rc1
+%define		version_tools	1.0.0
 Summary:	Graphic adventure game interpreter
 Summary(pl.UTF-8):	Interpreter gier przygodowych
 Name:		scummvm
 Version:	1.0.0
-Release:	0.%{pre}.1
+Release:	1
 License:	GPL
 Group:		X11/Applications/Games
-Source0:	http://dl.sourceforge.net/scummvm/%{name}-%{version}%{pre}.tar.bz2
-# Source0-md5:	f3fabedc7ff2424d6a4bc678229b22ce
+Source0:	http://dl.sourceforge.net/scummvm/%{name}-%{version}.tar.bz2
+# Source0-md5:	11b911937e0fc73c94a7bdc374ab617c
 Source1:	http://dl.sourceforge.net/scummvm/%{name}-tools-%{version_tools}.tar.bz2
-# Source1-md5:	3434770afa91a8eaf4fa31c9229d7686
+# Source1-md5:	6bbe24c7774f63d9ec0a4670ed32b8b6
 Source2:	%{name}.desktop
 Patch0:		%{name}-wx-config.patch
 URL:		http://scummvm.org/
@@ -393,7 +392,7 @@ Theme modern for ScummVM.
 Motyw modern dla ScummVM.
 
 %prep
-%setup -q -a 1 -n %{name}-%{version}%{pre}
+%setup -q -a 1
 %patch0 -p1
 
 %{__sed} -i -e 's:"plugins":"%{_libdir}/scummvm":' base/plugins.cpp
