@@ -3,7 +3,7 @@ Summary:	Graphic adventure game interpreter
 Summary(pl.UTF-8):	Interpreter gier przygodowych
 Name:		scummvm
 Version:	1.1.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	http://dl.sourceforge.net/scummvm/%{name}-%{version}.tar.bz2
@@ -84,6 +84,7 @@ Zestaw narzędzi mogących być użytecznymi w połączeniu ze ScummVM.
 Summary:	Adventure Game Interpreter
 Summary(pl.UTF-8):	Adventure Game Interpreter
 Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
 
 %description engine-agi
 The AGI (Adventure Game Interpreter) engine was used by Sierra in
@@ -97,6 +98,7 @@ Sierra w jej wczesnych grach przygodowych.
 Summary:	AGOS engine
 Summary(pl.UTF-8):	Silnik AGOS
 Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
 
 %description engine-agos
 The AGOS Engine was originally created by Alan Cox at HorrorSoft and
@@ -124,6 +126,7 @@ Używany w następujących grach:
 Summary:	Cinematique engine
 Summary(pl.UTF-8):	Silnik Cinematique
 Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
 
 %description engine-cine
 Cinematique engine.
@@ -135,6 +138,7 @@ Silnik Cinematique.
 Summary:	Cruise engine
 Summary(pl.UTF-8):	Silnik Cruise
 Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
 
 %description engine-cruise
 Cruise engine.
@@ -146,6 +150,7 @@ Silnik Cruise.
 Summary:	Draci engine
 Summary(pl.UTF-8):	Silnik Draci
 Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
 
 %description engine-draci
 Draci engine.
@@ -157,6 +162,7 @@ Silnik Draci.
 Summary:	Drascula engine
 Summary(pl.UTF-8):	Silnik Drascula
 Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
 
 %description engine-drascula
 Drascula engine.
@@ -168,6 +174,7 @@ Silnik Drascula.
 Summary:	Gob engine
 Summary(pl.UTF-8):	Silnik Gob
 Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
 
 %description engine-gob
 Engine to run adventure games created by Coktel Vision.
@@ -179,6 +186,7 @@ Silnik do uruchamiania gier stworzonych przez Coktel Vision.
 Summary:	Groovie engine
 Summary(pl.UTF-8):	Silnik Groovie
 Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
 
 %description engine-groovie
 Engine to run adventure games created by Trilobyte or
@@ -192,6 +200,7 @@ i Aftermath Media (The 7th Guest, The 11th Hour).
 Summary:	Kyrandia engine
 Summary(pl.UTF-8):	Silnik Kyrandia
 Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
 
 %description engine-kyra
 Kyrandia engine.
@@ -203,6 +212,7 @@ Silnik Kyrandia.
 Summary:	Lure engine
 Summary(pl.UTF-8):	Silnik Lure
 Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
 
 %description engine-lure
 Lure is the engine for the game Lure of the Temptress.
@@ -214,6 +224,7 @@ Lure jest silnikiem dla gry Lure of the Temptress.
 Summary:	M4/MADS engine
 Summary(pl.UTF-8):	Silnik M4/MADS
 Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
 
 %description engine-m4
 MADS stands for the MicroProse Adventure Development System,
@@ -230,6 +241,7 @@ do Sanctuary Woods i dalej rozwijany jako M4.
 Summary:	MADE engine
 Summary(pl.UTF-8):	Silnik MADE
 Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
 
 %description engine-made
 MADE stands for Multimedia Applications Development Environment,
@@ -244,6 +256,7 @@ był używany przez Activision w grach przygodowych.
 Summary:	Mohawk engine
 Summary(pl.UTF-8):	Silnik Mohawk
 Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
 
 %description engine-mohawk
 The Mohawk engine was developed by Brøderbund starting
@@ -257,6 +270,7 @@ latach 90-ych, na potrzeby gry Myst.
 Summary:	Parallaction engine
 Summary(pl.UTF-8):	Silnik Parallaction
 Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
 
 %description engine-parallaction
 Parallaction engine.
@@ -268,6 +282,7 @@ Silnik Parallaction.
 Summary:	Queen engine
 Summary(pl.UTF-8):	Silnik Queen
 Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
 
 %description engine-queen
 The Queen Engine is used to play Interactive Binary Illusions' Flight
@@ -281,6 +296,7 @@ Interactive Binary Illusions.
 Summary:	Scripts for Animated Graphic Adventures
 Summary(pl.UTF-8):	Scripts for Animated Graphic Adventures
 Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
 
 %description engine-saga
 SAGA (Scripts for Animated Graphic Adventures) engine.
@@ -292,6 +308,7 @@ Silnik SAGA (Scripts for Animated Graphic Adventures).
 Summary:	Sierra's "SCript Interpreter"
 Summary(pl.UTF-8):	SCript Interpreter Sierry
 Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
 
 %description engine-sci
 Sierra's "SCript Interpreter" and the "Sierra's Creative Interpreter.
@@ -303,6 +320,7 @@ SCript Interpreter Sierry.
 Summary:	Script Creation Utility for Maniac Mansion
 Summary(pl.UTF-8):	Script Creation Utility for Maniac Mansion
 Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
 
 %description engine-scumm
 SCUMM is a utility used to create the famous LucasArts adventure games
@@ -317,6 +335,7 @@ nazwę.
 Summary:	Sky engine
 Summary(pl.UTF-8):	Silnik Sky
 Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
 
 %description engine-sky
 Sky is the internal name for the Virtual Theatre variant which runs
@@ -330,6 +349,7 @@ Beneath a Steel Sky.
 Summary:	Sword1 engine
 Summary(pl.UTF-8):	Silnik Sword1
 Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
 
 %description engine-sword1
 Sword1 engine.
@@ -341,6 +361,7 @@ Silnik Sword1.
 Summary:	Sword2 engine
 Summary(pl.UTF-8):	Silnik Sword2
 Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
 
 %description engine-sword2
 Sword2 engine.
@@ -352,6 +373,7 @@ Silnik Sword2.
 Summary:	TeenAgent engine
 Summary(pl.UTF-8):	Silnik TeenAgent
 Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
 
 %description engine-teenagent
 This engine is only used by TeenAgent.
@@ -363,6 +385,7 @@ Ten silnik jest używany tylko przez TeenAgenta.
 Summary:	Tinsel engine
 Summary(pl.UTF-8):	Silnik Tinsel
 Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
 
 %description engine-tinsel
 This engine is only used by Discworld 1 and Discworld 2.
@@ -374,6 +397,7 @@ Ten silnik jest używany tylko przez Discworld 1 i Discworld 2.
 Summary:	Touche engine
 Summary(pl.UTF-8):	Silnik Touche
 Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
 
 %description engine-touche
 This engine is only used by Touche: The Adventures of the Fifth
@@ -387,6 +411,7 @@ Muszkietera.
 Summary:	Tucker engine
 Summary(pl.UTF-8):	Silnik Tucker
 Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
 
 %description engine-tucker
 The Tucker engine is used in Bud Tucker in Double Trouble.
@@ -398,6 +423,7 @@ Silnik Tucker jest używany przez Bud Tucker in Double Trouble.
 Summary:	Theme classic for ScummVM
 Summary(pl.UTF-8):	Motyw classic dla ScummVM
 Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
 
 %description theme-classic
 Theme classic for ScummVM.
@@ -409,6 +435,7 @@ Motyw classic dla ScummVM.
 Summary:	Theme modern for ScummVM
 Summary(pl.UTF-8):	Motyw modern dla ScummVM
 Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
 
 %description theme-modern
 Theme modern for ScummVM.
