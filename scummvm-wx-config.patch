@@ -1,20 +1,11 @@
---- scummvm-1.0.0rc1/scummvm-tools-1.0.0/Makefile	2009-09-30 11:45:38.477143239 +0200
-+++ scummvm-1.0.0rc1/scummvm-tools-1.0.0/Makefile~	2009-08-23 15:44:34.000000000 +0200
-@@ -212,7 +212,7 @@
- 	$(CXX) $(LDFLAGS) `freetype-config --libs` -o $@ $+
+--- scummvm-1.1.0/scummvm-tools-1.1.0/configure~	2010-04-02 19:55:43.000000000 +0200
++++ scummvm-1.1.0/scummvm-tools-1.1.0/configure	2010-04-20 12:46:30.628249474 +0200
+@@ -180,7 +180,7 @@
+ # TODO: small bit of code to test wxWidgets usability
+ find_wxconfig() {
+ 	echo_n "Looking for wx-config... "
+-	wxconfigs="$_wxconfig:wxgtk2-2.8-config"
++	wxconfigs="$_wxconfig:wx-gtk2-unicode-config"
+ 	_wxconfig=
  
- tools_gui$(EXEEXT): tools_gui.o
--	$(CXX) $(LDFLAGS) -o $@ $+ `wx-config --libs`
-+	$(CXX) $(LDFLAGS) -o $@ $+ `wx-gtk2-unicode-config --libs`
- 
- sword2_clue$(EXEEXT): sword2_clue.o util.o
- 	$(CXX) $(LDFLAGS) -o $@ $+ `pkg-config --libs gtk+-2.0`
-@@ -224,7 +224,7 @@
- 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) `freetype-config --cflags` -c create_sjisfnt.cpp -o create_sjisfnt.o
- 
- tools_gui.o: tools_gui.cpp tools_gui.h
--	$(CXX) $(CXXFLAGS) $(CPPFLAGS) `wx-config --cxxflags` -c tools_gui.cpp -o tools_gui.o
-+	$(CXX) $(CXXFLAGS) $(CPPFLAGS) `wx-gtk2-unicode-config --cxxflags` -c tools_gui.cpp -o tools_gui.o
- 
- sword2_clue.o: sword2_clue.cpp
- 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) `pkg-config --cflags gtk+-2.0` -c sword2_clue.cpp
+ 	IFS="${IFS=   }"; ac_save_ifs="$IFS"; IFS="$SEPARATOR"

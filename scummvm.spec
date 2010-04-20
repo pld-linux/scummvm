@@ -1,15 +1,15 @@
-%define		version_tools	1.0.0
+%define		version_tools	1.1.0
 Summary:	Graphic adventure game interpreter
 Summary(pl.UTF-8):	Interpreter gier przygodowych
 Name:		scummvm
-Version:	1.0.0
+Version:	1.1.0
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	http://dl.sourceforge.net/scummvm/%{name}-%{version}.tar.bz2
-# Source0-md5:	11b911937e0fc73c94a7bdc374ab617c
+# Source0-md5:	6793c3fe801d4fcd3d5b4fc2c27d0e9e
 Source1:	http://dl.sourceforge.net/scummvm/%{name}-tools-%{version_tools}.tar.bz2
-# Source1-md5:	6bbe24c7774f63d9ec0a4670ed32b8b6
+# Source1-md5:	d89ba46b7395671181333f29d963057f
 Source2:	%{name}.desktop
 Patch0:		%{name}-wx-config.patch
 URL:		http://scummvm.org/
@@ -19,6 +19,7 @@ BuildRequires:	flac-devel >= 1.0.1
 %ifarch %{ix86} %{x8664}
 BuildRequires:	fluidsynth-devel
 %endif
+BuildRequires:	freetype-devel
 BuildRequires:	libmad-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libvorbis-devel
@@ -141,6 +142,17 @@ Cruise engine.
 %description engine-cruise -l pl.UTF-8
 Silnik Cruise.
 
+%package engine-draci
+Summary:	Draci engine
+Summary(pl.UTF-8):	Silnik Draci
+Group:		X11/Applications/Games
+
+%description engine-draci
+Draci engine.
+
+%description engine-draci -l pl.UTF-8
+Silnik Draci.
+
 %package engine-drascula
 Summary:	Drascula engine
 Summary(pl.UTF-8):	Silnik Drascula
@@ -175,17 +187,6 @@ Aftermath Media (The 7th Guest, The 11th Hour).
 %description engine-groovie -l pl.UTF-8
 Silnik do uruchamiania gier stworzonych przez Trilobyte
 i Aftermath Media (The 7th Guest, The 11th Hour).
-
-%package engine-igor
-Summary:	Igor engine
-Summary(pl.UTF-8):	Silnik Igor
-Group:		X11/Applications/Games
-
-%description engine-igor
-Igor engine.
-
-%description engine-igor -l pl.UTF-8
-Silnik Igor.
 
 %package engine-kyra
 Summary:	Kyrandia engine
@@ -238,6 +239,19 @@ adventure games.
 %description engine-made -l pl.UTF-8
 MADE to Multimedia Applications Development Environment,
 był używany przez Activision w grach przygodowych.
+
+%package engine-mohawk
+Summary:	Mohawk engine
+Summary(pl.UTF-8):	Silnik Mohawk
+Group:		X11/Applications/Games
+
+%description engine-mohawk
+The Mohawk engine was developed by Brøderbund starting
+in the early 1990's with the Windows port of Myst.
+
+%description engine-mohawk -l pl.UTF-8
+Silnik Mohawk został stworzony przez Brøderbund we wczesnych
+latach 90-ych, na potrzeby gry Myst.
 
 %package engine-parallaction
 Summary:	Parallaction engine
@@ -334,6 +348,17 @@ Sword2 engine.
 %description engine-sword2 -l pl.UTF-8
 Silnik Sword2.
 
+%package engine-teenagent
+Summary:	TeenAgent engine
+Summary(pl.UTF-8):	Silnik TeenAgent
+Group:		X11/Applications/Games
+
+%description engine-teenagent
+This engine is only used by TeenAgent.
+
+%description engine-teenagent -l pl.UTF-8
+Ten silnik jest używany tylko przez TeenAgenta.
+
 %package engine-tinsel
 Summary:	Tinsel engine
 Summary(pl.UTF-8):	Silnik Tinsel
@@ -341,7 +366,6 @@ Group:		X11/Applications/Games
 
 %description engine-tinsel
 This engine is only used by Discworld 1 and Discworld 2.
-Musketeer.
 
 %description engine-tinsel -l pl.UTF-8
 Ten silnik jest używany tylko przez Discworld 1 i Discworld 2.
@@ -413,6 +437,10 @@ Motyw modern dla ScummVM.
 	LDFLAGS="%{rpmcflags} %{rpmldflags}"
 
 cd scummvm-tools-%{version_tools}
+./configure \
+	--prefix=/usr \
+	--disable-debug
+
 %{__make} \
 	CXX="%{__cxx}" \
 	CXXFLAGS="%{rpmcppflags} %{rpmcflags} -DUNIX $(wx-gtk2-unicode-config --cppflags)" \
@@ -427,31 +455,8 @@ install scummvm $RPM_BUILD_ROOT%{_bindir}
 
 install plugins/lib*.so $RPM_BUILD_ROOT%{_libdir}/scummvm
 
-cd scummvm-tools-%{version_tools}
-install compress_agos		$RPM_BUILD_ROOT%{_bindir}
-install compress_kyra		$RPM_BUILD_ROOT%{_bindir}
-install compress_queen		$RPM_BUILD_ROOT%{_bindir}
-install compress_saga		$RPM_BUILD_ROOT%{_bindir}
-install compress_scumm_bun	$RPM_BUILD_ROOT%{_bindir}
-install compress_scumm_san	$RPM_BUILD_ROOT%{_bindir}
-install compress_scumm_sou	$RPM_BUILD_ROOT%{_bindir}
-install compress_sword1		$RPM_BUILD_ROOT%{_bindir}
-install compress_sword2		$RPM_BUILD_ROOT%{_bindir}
-install compress_touche		$RPM_BUILD_ROOT%{_bindir}
-install convert_dxa.sh		$RPM_BUILD_ROOT%{_bindir}
-install dekyra			$RPM_BUILD_ROOT%{_bindir}
-install descumm			$RPM_BUILD_ROOT%{_bindir}
-install desword2		$RPM_BUILD_ROOT%{_bindir}
-install encode_dxa		$RPM_BUILD_ROOT%{_bindir}
-install extract_agos		$RPM_BUILD_ROOT%{_bindir}
-install extract_kyra		$RPM_BUILD_ROOT%{_bindir}
-install extract_loom_tg16	$RPM_BUILD_ROOT%{_bindir}
-install extract_mm_apple	$RPM_BUILD_ROOT%{_bindir}
-install extract_mm_c64		$RPM_BUILD_ROOT%{_bindir}
-install extract_mm_nes		$RPM_BUILD_ROOT%{_bindir}
-install extract_scumm_mac	$RPM_BUILD_ROOT%{_bindir}
-install extract_zak_c64		$RPM_BUILD_ROOT%{_bindir}
-cd -
+%{__make} -C scummvm-tools-%{version_tools} install \
+	DESTDIR=$RPM_BUILD_ROOT%{_bindir}
 
 install %{SOURCE2} $RPM_BUILD_ROOT%{_desktopdir}
 install icons/%{name}.svg $RPM_BUILD_ROOT%{_pixmapsdir}
@@ -494,6 +499,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %dir %{_libdir}/scummvm/libcruise.so
 
+%files engine-draci
+%defattr(644,root,root,755)
+%dir %{_libdir}/scummvm/libdraci.so
+
 %files engine-drascula
 %defattr(644,root,root,755)
 %dir %{_libdir}/scummvm/libdrascula.so
@@ -505,10 +514,6 @@ rm -rf $RPM_BUILD_ROOT
 %files engine-groovie
 %defattr(644,root,root,755)
 %dir %{_libdir}/scummvm/libgroovie.so
-
-%files engine-igor
-%defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libigor.so
 
 %files engine-kyra
 %defattr(644,root,root,755)
@@ -525,6 +530,10 @@ rm -rf $RPM_BUILD_ROOT
 %files engine-made
 %defattr(644,root,root,755)
 %dir %{_libdir}/scummvm/libmade.so
+
+%files engine-mohawk
+%defattr(644,root,root,755)
+%dir %{_libdir}/scummvm/libmohawk.so
 
 %files engine-parallaction
 %defattr(644,root,root,755)
@@ -557,6 +566,10 @@ rm -rf $RPM_BUILD_ROOT
 %files engine-sword2
 %defattr(644,root,root,755)
 %dir %{_libdir}/scummvm/libsword2.so
+
+%files engine-teenagent
+%defattr(644,root,root,755)
+%dir %{_libdir}/scummvm/libteenagent.so
 
 %files engine-tinsel
 %defattr(644,root,root,755)
