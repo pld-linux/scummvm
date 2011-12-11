@@ -1,15 +1,15 @@
-%define		version_tools	1.1.0
+%define		version_tools	1.4.0
 Summary:	Graphic adventure game interpreter
 Summary(pl.UTF-8):	Interpreter gier przygodowych
 Name:		scummvm
-Version:	1.1.0
-Release:	3
+Version:	1.4.0
+Release:	1
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	http://dl.sourceforge.net/scummvm/%{name}-%{version}.tar.bz2
-# Source0-md5:	6793c3fe801d4fcd3d5b4fc2c27d0e9e
+# Source0-md5:	361000b78ebf0d0f449e98238d677be1
 Source1:	http://dl.sourceforge.net/scummvm/%{name}-tools-%{version_tools}.tar.bz2
-# Source1-md5:	d89ba46b7395671181333f29d963057f
+# Source1-md5:	471138a83de3bacd565e18b617055494
 Source2:	%{name}.desktop
 Patch0:		%{name}-wx-config.patch
 URL:		http://scummvm.org/
@@ -122,6 +122,18 @@ Używany w następujących grach:
 - Simon the Sorcerer 2
 - The Feeble Files
 
+%package engine-cge
+Summary:	CGE engine
+Summary(pl.UTF-8):	Silnik CGE
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-cge
+CGE engine.
+
+%description engine-cge -l pl.UTF-8
+Silnik CGE.
+
 %package engine-cine
 Summary:	Cinematique engine
 Summary(pl.UTF-8):	Silnik Cinematique
@@ -133,6 +145,18 @@ Cinematique engine.
 
 %description engine-cine -l pl.UTF-8
 Silnik Cinematique.
+
+%package engine-composer
+Summary:	Composer engine
+Summary(pl.UTF-8):	Silnik Composer
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-composer
+Composer engine.
+
+%description engine-composer -l pl.UTF-8
+Silnik Composer.
 
 %package engine-cruise
 Summary:	Cruise engine
@@ -170,6 +194,18 @@ Drascula engine.
 %description engine-drascula -l pl.UTF-8
 Silnik Drascula.
 
+%package engine-dreamweb
+Summary:	Dreamweb engine
+Summary(pl.UTF-8):	Silnik Dreamweb
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-dreamweb
+Dreamweb engine.
+
+%description engine-dreamweb -l pl.UTF-8
+Silnik Dreamweb.
+
 %package engine-gob
 Summary:	Gob engine
 Summary(pl.UTF-8):	Silnik Gob
@@ -196,6 +232,18 @@ Aftermath Media (The 7th Guest, The 11th Hour).
 Silnik do uruchamiania gier stworzonych przez Trilobyte
 i Aftermath Media (The 7th Guest, The 11th Hour).
 
+%package engine-hugo
+Summary:	Hugo engine
+Summary(pl.UTF-8):	Silnik Hugo
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-hugo
+Hugo engine.
+
+%description engine-hugo -l pl.UTF-8
+Silnik Hugo.
+
 %package engine-kyra
 Summary:	Kyrandia engine
 Summary(pl.UTF-8):	Silnik Kyrandia
@@ -207,6 +255,18 @@ Kyrandia engine.
 
 %description engine-kyra -l pl.UTF-8
 Silnik Kyrandia.
+
+%package engine-lastexpress
+Summary:	Lastexpress engine
+Summary(pl.UTF-8):	Silnik Lastexpress
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-lastexpress
+Lastexpress is the engine for the game Lastexpress of the Temptress.
+
+%description engine-lastexpress -l pl.UTF-8
+Lastexpress jest silnikiem dla gry Lastexpress of the Temptress.
 
 %package engine-lure
 Summary:	Lure engine
@@ -369,6 +429,18 @@ Sword2 engine.
 %description engine-sword2 -l pl.UTF-8
 Silnik Sword2.
 
+%package engine-sword25
+Summary:	Sword2.5 engine
+Summary(pl.UTF-8):	Silnik Sword2.5
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-sword25
+Sword2.5 engine.
+
+%description engine-sword25 -l pl.UTF-8
+Silnik Sword2.5.
+
 %package engine-teenagent
 Summary:	TeenAgent engine
 Summary(pl.UTF-8):	Silnik TeenAgent
@@ -381,6 +453,18 @@ This engine is only used by TeenAgent.
 %description engine-teenagent -l pl.UTF-8
 Ten silnik jest używany tylko przez TeenAgenta.
 
+%package engine-testbed
+Summary:	Testbed engine
+Summary(pl.UTF-8):	Silnik Testbed
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-testbed
+TestBed: the Testing framework engine
+
+%description engine-testbed -l pl.UTF-8
+TestBed: the Testing framework engine
+
 %package engine-tinsel
 Summary:	Tinsel engine
 Summary(pl.UTF-8):	Silnik Tinsel
@@ -392,6 +476,18 @@ This engine is only used by Discworld 1 and Discworld 2.
 
 %description engine-tinsel -l pl.UTF-8
 Ten silnik jest używany tylko przez Discworld 1 i Discworld 2.
+
+%package engine-toon
+Summary:	Toon engine
+Summary(pl.UTF-8):	Silnik Toon
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-toon
+Toonstruck engine.
+
+%description engine-toon -l pl.UTF-8
+Silnik Toonstruck.
 
 %package engine-touche
 Summary:	Touche engine
@@ -406,6 +502,18 @@ Musketeer.
 %description engine-touche -l pl.UTF-8
 Ten silnik jest używany tylko przez Touché: Przygody Piątego
 Muszkietera.
+
+%package engine-tsage
+Summary:	Tsage engine
+Summary(pl.UTF-8):	Silnik Tsage
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-tsage
+This engine is only used by Ringworld: Revenge Of The Patriarch.
+
+%description engine-tsage -l pl.UTF-8
+Ten silnik jest używany tylko przez Ringworld: Revenge Of The Patriach.
 
 %package engine-tucker
 Summary:	Tucker engine
@@ -445,7 +553,9 @@ Motyw modern dla ScummVM.
 
 %prep
 %setup -q -a 1
-%patch0 -p1
+cd scummvm-tools-%{version_tools}
+%patch0 -p2
+cd ..
 
 %{__sed} -i -e 's:"plugins":"%{_libdir}/scummvm":' base/plugins.cpp
 
@@ -453,7 +563,6 @@ Motyw modern dla ScummVM.
 ./configure \
 	--prefix=/usr \
 	--disable-debug \
-	--enable-mpeg2 \
 	--enable-all-engines \
 	--enable-plugins \
 	--default-dynamic
@@ -483,7 +592,7 @@ install scummvm $RPM_BUILD_ROOT%{_bindir}
 install plugins/lib*.so $RPM_BUILD_ROOT%{_libdir}/scummvm
 
 %{__make} -C scummvm-tools-%{version_tools} install \
-	DESTDIR=$RPM_BUILD_ROOT%{_bindir}
+	DESTDIR=$RPM_BUILD_ROOT
 
 install %{SOURCE2} $RPM_BUILD_ROOT%{_desktopdir}
 install icons/%{name}.svg $RPM_BUILD_ROOT%{_pixmapsdir}
@@ -509,6 +618,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc scummvm-tools-%{version_tools}/README
 %attr(755,root,root) %{_bindir}/*
 %exclude %{_bindir}/scummvm
+%{_datadir}/scummvm-tools
 
 %files engine-agi
 %defattr(644,root,root,755)
@@ -518,9 +628,17 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %dir %{_libdir}/scummvm/libagos.so
 
+%files engine-cge
+%defattr(644,root,root,755)
+%dir %{_libdir}/scummvm/libcge.so
+
 %files engine-cine
 %defattr(644,root,root,755)
 %dir %{_libdir}/scummvm/libcine.so
+
+%files engine-composer
+%defattr(644,root,root,755)
+%dir %{_libdir}/scummvm/libcomposer.so
 
 %files engine-cruise
 %defattr(644,root,root,755)
@@ -534,6 +652,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %dir %{_libdir}/scummvm/libdrascula.so
 
+%files engine-dreamweb
+%defattr(644,root,root,755)
+%dir %{_libdir}/scummvm/libdreamweb.so
+
 %files engine-gob
 %defattr(644,root,root,755)
 %dir %{_libdir}/scummvm/libgob.so
@@ -542,9 +664,17 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %dir %{_libdir}/scummvm/libgroovie.so
 
+%files engine-hugo
+%defattr(644,root,root,755)
+%dir %{_libdir}/scummvm/libhugo.so
+
 %files engine-kyra
 %defattr(644,root,root,755)
 %dir %{_libdir}/scummvm/libkyra.so
+
+%files engine-lastexpress
+%defattr(644,root,root,755)
+%dir %{_libdir}/scummvm/liblastexpress.so
 
 %files engine-lure
 %defattr(644,root,root,755)
@@ -594,9 +724,17 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %dir %{_libdir}/scummvm/libsword2.so
 
+%files engine-sword25
+%defattr(644,root,root,755)
+%dir %{_libdir}/scummvm/libsword25.so
+
 %files engine-teenagent
 %defattr(644,root,root,755)
 %dir %{_libdir}/scummvm/libteenagent.so
+
+%files engine-testbed
+%defattr(644,root,root,755)
+%dir %{_libdir}/scummvm/libtestbed.so
 
 %files engine-tinsel
 %defattr(644,root,root,755)
@@ -605,6 +743,14 @@ rm -rf $RPM_BUILD_ROOT
 %files engine-touche
 %defattr(644,root,root,755)
 %dir %{_libdir}/scummvm/libtouche.so
+
+%files engine-toon
+%defattr(644,root,root,755)
+%dir %{_libdir}/scummvm/libtoon.so
+
+%files engine-tsage
+%defattr(644,root,root,755)
+%dir %{_libdir}/scummvm/libtsage.so
 
 %files engine-tucker
 %defattr(644,root,root,755)
