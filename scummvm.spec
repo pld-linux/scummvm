@@ -2,13 +2,13 @@
 Summary:	Graphic adventure game interpreter
 Summary(pl.UTF-8):	Interpreter gier przygodowych
 Name:		scummvm
-Version:	1.4.0
-Release:	3
-License:	GPL
+Version:	1.4.1
+Release:	1
+License:	GPL v2+
 Group:		X11/Applications/Games
-Source0:	http://dl.sourceforge.net/scummvm/%{name}-%{version}.tar.bz2
-# Source0-md5:	361000b78ebf0d0f449e98238d677be1
-Source1:	http://dl.sourceforge.net/scummvm/%{name}-tools-%{version_tools}.tar.bz2
+Source0:	http://downloads.sourceforge.net/scummvm/%{name}-%{version}.tar.bz2
+# Source0-md5:	aa094c2224aad22d5340a1d2d919c883
+Source1:	http://downloads.sourceforge.net/scummvm/%{name}-tools-%{version_tools}.tar.bz2
 # Source1-md5:	471138a83de3bacd565e18b617055494
 Source2:	%{name}.desktop
 Patch0:		%{name}-wx-config.patch
@@ -21,16 +21,16 @@ BuildRequires:	fluidsynth-devel
 %endif
 BuildRequires:	freetype-devel
 BuildRequires:	libmad-devel
+BuildRequires:	libmpeg2-devel >= 0.3.2
 BuildRequires:	libpng-devel
 BuildRequires:	libvorbis-devel
-BuildRequires:	libmpeg2-devel >= 0.3.2
 %ifarch %{ix86}
 BuildRequires:	nasm
 %endif
+BuildRequires:	sed >= 4.0
 BuildRequires:	wxGTK2-unicode-devel
 BuildRequires:	wxWidgets-devel
 BuildRequires:	zlib-devel
-BuildRequires:	sed >= 4.0
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -91,8 +91,8 @@ The AGI (Adventure Game Interpreter) engine was used by Sierra in
 their early adventure games.
 
 %description engine-agi -l pl.UTF-8
-Silnik AGI (Adventure Game Interpreter) był używany przez firmę
-Sierra w jej wczesnych grach przygodowych.
+Silnik AGI (Adventure Game Interpreter) był używany przez firmę Sierra
+w jej wczesnych grach przygodowych.
 
 %package engine-agos
 Summary:	AGOS engine
@@ -102,8 +102,8 @@ Requires:	%{name} = %{version}-%{release}
 
 %description engine-agos
 The AGOS Engine was originally created by Alan Cox at HorrorSoft and
-is based on AberMUD V, with graphical extensions.
-Required for following games:
+is based on AberMUD V, with graphical extensions. Required for
+following games:
 - Elvira
 - Elvira 2
 - Waxworks
@@ -225,12 +225,12 @@ Group:		X11/Applications/Games
 Requires:	%{name} = %{version}-%{release}
 
 %description engine-groovie
-Engine to run adventure games created by Trilobyte or
-Aftermath Media (The 7th Guest, The 11th Hour).
+Engine to run adventure games created by Trilobyte or Aftermath Media
+(The 7th Guest, The 11th Hour).
 
 %description engine-groovie -l pl.UTF-8
-Silnik do uruchamiania gier stworzonych przez Trilobyte
-i Aftermath Media (The 7th Guest, The 11th Hour).
+Silnik do uruchamiania gier stworzonych przez Trilobyte i Aftermath
+Media (The 7th Guest, The 11th Hour).
 
 %package engine-hugo
 Summary:	Hugo engine
@@ -287,15 +287,15 @@ Group:		X11/Applications/Games
 Requires:	%{name} = %{version}-%{release}
 
 %description engine-m4
-MADS stands for the MicroProse Adventure Development System,
-used in the three adventure games they made. It was later sold
-to Sanctuary Woods, who continued development on it and named
-it M4 (MADS version 4 perhaps) and released two more games.
+MADS stands for the MicroProse Adventure Development System, used in
+the three adventure games they made. It was later sold to Sanctuary
+Woods, who continued development on it and named it M4 (MADS version 4
+perhaps) and released two more games.
 
 %description engine-m4 -l pl.UTF-8
-MADS to MicroProse Adventure Development System, używany jest
-w trzech grach stworzonych przez MicroProse. Został sprzedany
-do Sanctuary Woods i dalej rozwijany jako M4.
+MADS to MicroProse Adventure Development System, używany jest w trzech
+grach stworzonych przez MicroProse. Został sprzedany do Sanctuary
+Woods i dalej rozwijany jako M4.
 
 %package engine-made
 Summary:	MADE engine
@@ -304,13 +304,13 @@ Group:		X11/Applications/Games
 Requires:	%{name} = %{version}-%{release}
 
 %description engine-made
-MADE stands for Multimedia Applications Development Environment,
-and was used by Activision to create some of their point'n'click
-adventure games. 
+MADE stands for Multimedia Applications Development Environment, and
+was used by Activision to create some of their point'n'click adventure
+games.
 
 %description engine-made -l pl.UTF-8
-MADE to Multimedia Applications Development Environment,
-był używany przez Activision w grach przygodowych.
+MADE to Multimedia Applications Development Environment, był używany
+przez Activision w grach przygodowych.
 
 %package engine-mohawk
 Summary:	Mohawk engine
@@ -319,12 +319,12 @@ Group:		X11/Applications/Games
 Requires:	%{name} = %{version}-%{release}
 
 %description engine-mohawk
-The Mohawk engine was developed by Brøderbund starting
-in the early 1990's with the Windows port of Myst.
+The Mohawk engine was developed by Brøderbund starting in the early
+1990's with the Windows port of Myst.
 
 %description engine-mohawk -l pl.UTF-8
-Silnik Mohawk został stworzony przez Brøderbund we wczesnych
-latach 90-ych, na potrzeby gry Myst.
+Silnik Mohawk został stworzony przez Brøderbund we wczesnych latach
+90-ych, na potrzeby gry Myst.
 
 %package engine-parallaction
 Summary:	Parallaction engine
@@ -513,7 +513,8 @@ Requires:	%{name} = %{version}-%{release}
 This engine is only used by Ringworld: Revenge Of The Patriarch.
 
 %description engine-tsage -l pl.UTF-8
-Ten silnik jest używany tylko przez Ringworld: Revenge Of The Patriach.
+Ten silnik jest używany tylko przez Ringworld: Revenge Of The
+Patriach.
 
 %package engine-tucker
 Summary:	Tucker engine
@@ -561,7 +562,7 @@ cd ..
 
 %build
 ./configure \
-	--prefix=/usr \
+--prefix=%{_prefix} \
 	--disable-debug \
 	--enable-all-engines \
 	--enable-plugins \
@@ -574,7 +575,7 @@ cd ..
 
 cd scummvm-tools-%{version_tools}
 ./configure \
-	--prefix=/usr \
+--prefix=%{_prefix} \
 	--disable-debug
 
 %{__make} \
