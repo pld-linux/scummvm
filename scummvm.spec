@@ -562,7 +562,7 @@ cd ..
 
 %build
 ./configure \
---prefix=%{_prefix} \
+	--prefix=%{_prefix} \
 	--disable-debug \
 	--enable-all-engines \
 	--enable-plugins \
@@ -575,7 +575,7 @@ cd ..
 
 cd scummvm-tools-%{version_tools}
 ./configure \
---prefix=%{_prefix} \
+	--prefix=%{_prefix} \
 	--disable-debug
 
 %{__make} \
