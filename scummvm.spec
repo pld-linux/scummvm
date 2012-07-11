@@ -570,7 +570,7 @@ cd ..
 
 %{__make} \
 	CXX="%{__cxx}" \
-	CXXFLAGS="%{rpmcppflags} %{rpmcflags} -DDYNAMIC_MODULES -fpic $(wx-gtk2-unicode-config --cppflags)" \
+	CXXFLAGS="%{rpmcppflags} %{rpmcflags} -fpic $(wx-gtk2-unicode-config --cppflags)" \
 	LDFLAGS="%{rpmcflags} %{rpmldflags}"
 
 cd scummvm-tools-%{version_tools}
@@ -580,7 +580,7 @@ cd scummvm-tools-%{version_tools}
 
 %{__make} \
 	CXX="%{__cxx}" \
-	CXXFLAGS="%{rpmcppflags} %{rpmcflags} -DUNIX $(wx-gtk2-unicode-config --cppflags)" \
+	CXXFLAGS="%{rpmcppflags} %{rpmcflags} -DUNIX -fpermissive $(wx-gtk2-unicode-config --cppflags)" \
 	LDFLAGS="%{rpmcflags} %{rpmldflags} $(wx-gtk2-unicode-config --libs)"
 
 %install
