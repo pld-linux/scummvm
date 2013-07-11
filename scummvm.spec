@@ -1,15 +1,15 @@
-%define		version_tools	1.4.0
+%define		version_tools	1.6.0
 Summary:	Graphic adventure game interpreter
 Summary(pl.UTF-8):	Interpreter gier przygodowych
 Name:		scummvm
-Version:	1.4.1
-Release:	5
+Version:	1.6.0
+Release:	0.1
 License:	GPL v2+
 Group:		X11/Applications/Games
 Source0:	http://downloads.sourceforge.net/scummvm/%{name}-%{version}.tar.bz2
-# Source0-md5:	aa094c2224aad22d5340a1d2d919c883
+# Source0-md5:	473c151ff44e3db7b603ecacd800a0d2
 Source1:	http://downloads.sourceforge.net/scummvm/%{name}-tools-%{version_tools}.tar.bz2
-# Source1-md5:	471138a83de3bacd565e18b617055494
+# Source1-md5:	9a5c74a49707c513e8853004e3a699e4
 Source2:	%{name}.desktop
 Patch0:		%{name}-wx-config.patch
 URL:		http://scummvm.org/
