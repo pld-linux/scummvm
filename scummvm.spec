@@ -12,6 +12,7 @@ Source1:	http://downloads.sourceforge.net/scummvm/%{name}-tools-%{version_tools}
 # Source1-md5:	9a5c74a49707c513e8853004e3a699e4
 Source2:	%{name}.desktop
 Patch0:		%{name}-wx-config.patch
+Patch1:		dwarf-debug.patch
 URL:		http://scummvm.org/
 BuildRequires:	SDL-devel >= 1.2.2
 BuildRequires:	alsa-lib-devel >= 0.9
@@ -599,6 +600,7 @@ Motyw modern dla ScummVM.
 
 %prep
 %setup -q -a 1
+%patch1 -p1
 cd scummvm-tools-%{version_tools}
 %patch0 -p2
 cd ..

@@ -1,0 +1,11 @@
+--- scummvm-1.6.0/configure~	2013-05-26 22:21:47.000000000 +0200
++++ scummvm-1.6.0/configure	2013-07-16 01:07:53.563063545 +0200
+@@ -3786,7 +3786,7 @@
+ 					NASMFLAGS="$NASMFLAGS -f aout"
+ 				;;
+ 				*)
+-					NASMFLAGS="$NASMFLAGS -f elf"
++					NASMFLAGS="$NASMFLAGS -f elf -F dwarf"
+ 				;;
+ 			esac
+ 			_nasm=yes
