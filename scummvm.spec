@@ -32,6 +32,7 @@ BuildRequires:	wxGTK2-unicode-devel
 BuildRequires:	wxWidgets-devel
 BuildRequires:	zlib-devel
 BuildRequires:	zlib-devel
+Obsoletes:	scummvm-engine-m4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		specflags_sparc	-fPIC
@@ -280,23 +281,6 @@ Lure is the engine for the game Lure of the Temptress.
 %description engine-lure -l pl.UTF-8
 Lure jest silnikiem dla gry Lure of the Temptress.
 
-%package engine-m4
-Summary:	M4/MADS engine
-Summary(pl.UTF-8):	Silnik M4/MADS
-Group:		X11/Applications/Games
-Requires:	%{name} = %{version}-%{release}
-
-%description engine-m4
-MADS stands for the MicroProse Adventure Development System, used in
-the three adventure games they made. It was later sold to Sanctuary
-Woods, who continued development on it and named it M4 (MADS version 4
-perhaps) and released two more games.
-
-%description engine-m4 -l pl.UTF-8
-MADS to MicroProse Adventure Development System, używany jest w trzech
-grach stworzonych przez MicroProse. Został sprzedany do Sanctuary
-Woods i dalej rozwijany jako M4.
-
 %package engine-made
 Summary:	MADE engine
 Summary(pl.UTF-8):	Silnik MADE
@@ -528,6 +512,67 @@ The Tucker engine is used in Bud Tucker in Double Trouble.
 %description engine-tucker -l pl.UTF-8
 Silnik Tucker jest używany przez Bud Tucker in Double Trouble.
 
+%package engine-hopkins
+Summary:	Hopkins FBI engine
+Summary(pl.UTF-8):	Silnik Hopkins FBI
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-hopkins
+This engine is used by Hopkins FBI.
+
+%description engine-hopkins -l pl.UTF-8
+Ten silnik jest używany przez Hopkins FBI.
+
+%package engine-pegasus
+Summary:	Pegasus engine
+Summary(pl.UTF-8):	Silnik Pegasus
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-pegasus
+This engine is used by The Journeyman Project: Pegasus Prime.
+
+%description engine-pegasus -l pl.UTF-8
+Ten silnik jest używany przez The Journeyman Project: Pegasus Prime.
+
+%package engine-toltecs
+Summary:	Toltecs engine
+Summary(pl.UTF-8):	Silnik Toltecs
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-toltecs
+This engine is used by 3 Skulls of the Toltecs.
+
+%description engine-toltecs -l pl.UTF-8
+Ten silnik jest używany przez 3 Skulls of the Toltecs.
+
+%package engine-tony
+Summary:	Tony engine
+Summary(pl.UTF-8):	Silnik Tony
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-tony
+This engine is used by Tony Tough and the Night of Roasted Moths.
+
+%description engine-tony -l pl.UTF-8
+Ten silnik jest używany przez Tony Tough and the Night of Roasted
+Moths.
+
+%package engine-wintermute
+Summary:	Wintermute engine
+Summary(pl.UTF-8):	Silnik Wintermute
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-wintermute
+The engine is used for the Wintermute games.
+
+%description engine-wintermute -l pl.UTF-8
+Ten silnik jest używany przez gry Wintermute.
+
 %package theme-classic
 Summary:	Theme classic for ScummVM
 Summary(pl.UTF-8):	Motyw classic dla ScummVM
@@ -681,10 +726,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %dir %{_libdir}/scummvm/liblure.so
 
-%files engine-m4
-%defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libm4.so
-
 %files engine-made
 %defattr(644,root,root,755)
 %dir %{_libdir}/scummvm/libmade.so
@@ -756,6 +797,26 @@ rm -rf $RPM_BUILD_ROOT
 %files engine-tucker
 %defattr(644,root,root,755)
 %dir %{_libdir}/scummvm/libtucker.so
+
+%files engine-hopkins
+%defattr(644,root,root,755)
+%dir %{_libdir}/scummvm/libhopkins.so
+
+%files engine-pegasus
+%defattr(644,root,root,755)
+%dir %{_libdir}/scummvm/libpegasus.so
+
+%files engine-toltecs
+%defattr(644,root,root,755)
+%dir %{_libdir}/scummvm/libtoltecs.so
+
+%files engine-tony
+%defattr(644,root,root,755)
+%dir %{_libdir}/scummvm/libtony.so
+
+%files engine-wintermute
+%defattr(644,root,root,755)
+%dir %{_libdir}/scummvm/libwintermute.so
 
 %files theme-classic
 %defattr(644,root,root,755)
