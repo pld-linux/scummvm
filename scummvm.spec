@@ -1,15 +1,15 @@
-%define		version_tools	1.6.0
+%define		version_tools	1.9.0
 Summary:	Graphic adventure game interpreter
 Summary(pl.UTF-8):	Interpreter gier przygodowych
 Name:		scummvm
-Version:	1.6.0
-Release:	9
+Version:	1.9.0
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Games
-Source0:	http://downloads.sourceforge.net/scummvm/%{name}-%{version}.tar.bz2
-# Source0-md5:	473c151ff44e3db7b603ecacd800a0d2
-Source1:	http://downloads.sourceforge.net/scummvm/%{name}-tools-%{version_tools}.tar.bz2
-# Source1-md5:	9a5c74a49707c513e8853004e3a699e4
+Source0:	http://scummvm.org/frs/scummvm/%{version}/%{name}-%{version}.tar.xz
+# Source0-md5:	3255706992edaf30380ce8a49cb305b7
+Source1:	http://scummvm.org/frs/scummvm-tools/%{version_tools}/%{name}-tools-%{version_tools}.tar.xz
+# Source1-md5:	7b472cc2895161c64630df92df4c65b0
 Source2:	%{name}.desktop
 Patch0:		%{name}-wx-config.patch
 Patch1:		dwarf-debug.patch
@@ -574,6 +574,268 @@ The engine is used for the Wintermute games.
 %description engine-wintermute -l pl.UTF-8
 Ten silnik jest używany przez gry Wintermute.
 
+%package engine-access
+Summary:	Access engine
+Summary(pl.UTF-8):	Silnik Access
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-access
+The engine is used for the Amazon: Guardians of Eden,
+Martian Memorandum and Noctropolis games.
+
+%description engine-access -l pl.UTF-8
+Ten silnik jest używany przez gry Amazon: Guardians of Eden,
+Martian Memorandum i Noctropolis.
+
+%package engine-adl
+Summary:	ADL engine
+Summary(pl.UTF-8):	Silnik ADL
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-adl
+The engine is used for the Sierra ADL Hi-Res Adventure games.
+
+%description engine-adl -l pl.UTF-8
+Ten silnik jest używany przez gry Sierra ADL Hi-Res Adventure.
+
+%package engine-avalanche
+Summary:	Avalanche engine
+Summary(pl.UTF-8):	Silnik Avalanche
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-avalanche
+The engine is used for the Lord Avalot d'Argent game.
+
+%description engine-avalanche -l pl.UTF-8
+Ten silnik jest używany przez grę Lord Avalot d'Argent.
+
+%package engine-bbvs
+Summary:	BBVS engine
+Summary(pl.UTF-8):	Silnik BBVS
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-bbvs
+The engine is used for the Beavis and Butt-Head in
+Virtual Stupidity game.
+
+%description engine-bbvs -l pl.UTF-8
+Ten silnik jest używany przez grę Beavis and Butt-Head in
+Virtual Stupidity.
+
+%package engine-cge2
+Summary:	CGE2 engine
+Summary(pl.UTF-8):	Silnik CGE2
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-cge2
+The engine is used for the Sfinx game.
+
+%description engine-cge2 -l pl.UTF-8
+Ten silnik jest używany przez grę Sfinx.
+
+%package engine-director
+Summary:	Director engine
+Summary(pl.UTF-8):	Silnik Director
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-director
+The engine is used for the Director games.
+
+%description engine-director -l pl.UTF-8
+Ten silnik jest używany przez gry Director.
+
+%package engine-dm
+Summary:	DM engine
+Summary(pl.UTF-8):	Silnik DM
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-dm
+The engine is used for the Dungeon Master game.
+
+%description engine-dm -l pl.UTF-8
+Ten silnik jest używany przez grę Dungeon Master.
+
+%package engine-fullpipe
+Summary:	Fullpipe engine
+Summary(pl.UTF-8):	Silnik Fullpipe
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-fullpipe
+The engine is used for the Full Pipe game.
+
+%description engine-fullpipe -l pl.UTF-8
+Ten silnik jest używany przez grę Full Pipe.
+
+%package engine-gnap
+Summary:	GNAP engine
+Summary(pl.UTF-8):	Silnik GNAP
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-gnap
+The engine is used for the U.F.O.s game.
+
+%description engine-gnap -l pl.UTF-8
+Ten silnik jest używany przez grę U.F.O.s.
+
+%package engine-lab
+Summary:	Lab engine
+Summary(pl.UTF-8):	Silnik Lab
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-lab
+The engine is used for The Labyrinth of Time game.
+
+%description engine-lab -l pl.UTF-8
+Ten silnik jest używany przez grę The Labyrinth of Time.
+
+%package engine-macventure
+Summary:	MacVenture engine
+Summary(pl.UTF-8):	Silnik MacVenture
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-macventure
+The engine is used for the Deja Vu game.
+
+%description engine-macventure -l pl.UTF-8
+Ten silnik jest używany przez grę Deja Vu.
+
+%package engine-mads
+Summary:	MADS engine
+Summary(pl.UTF-8):	Silnik MADS
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-mads
+The engine is used for the Dragonsphere and
+Return of the Phantom games.
+
+%description engine-mads -l pl.UTF-8
+Ten silnik jest używany przez gry Dragonsphere i
+Return of the Phantom.
+
+%package engine-mortevielle
+Summary:	Mortevielle engine
+Summary(pl.UTF-8):	Silnik Mortevielle
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-mortevielle
+The engine is used for the Mortville Manor game.
+
+%description engine-mortevielle -l pl.UTF-8
+Ten silnik jest używany przez grę Mortville Manor.
+
+%package engine-neverhood
+Summary:	Neverhood engine
+Summary(pl.UTF-8):	Silnik Neverhood
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-neverhood
+The engine is used for the Neverhood game.
+
+%description engine-neverhood -l pl.UTF-8
+Ten silnik jest używany przez grę Neverhood.
+
+%package engine-prince
+Summary:	Prince engine
+Summary(pl.UTF-8):	Silnik Prince
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-prince
+The engine is used for The Prince and the Coward game.
+
+%description engine-prince -l pl.UTF-8
+Ten silnik jest używany przez grę The Prince and the Coward.
+
+%package engine-sherlock
+Summary:	Sherlock engine
+Summary(pl.UTF-8):	Silnik Sherlock
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-sherlock
+The engine is used for The Lost Files of Sherlock Holmes games.
+
+%description engine-sherlock -l pl.UTF-8
+Ten silnik jest używany przez gry The Lost Files of Sherlock Holmes.
+
+%package engine-titanic
+Summary:	Titanic engine
+Summary(pl.UTF-8):	Silnik Titanic
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-titanic
+The engine is used for Starship Titanic game.
+
+%description engine-titanic -l pl.UTF-8
+Ten silnik jest używany przez gry Starship Titanic.
+
+%package engine-voyeur
+Summary:	Voyeur engine
+Summary(pl.UTF-8):	Silnik Voyeur
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-voyeur
+The engine is used for the Voyeur game.
+
+%description engine-voyeur -l pl.UTF-8
+Ten silnik jest używany przez grę Voyeur.
+
+%package engine-wage
+Summary:	WAGE engine
+Summary(pl.UTF-8):	Silnik WAGE
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-wage
+The engine is used for the WAGE games.
+
+%description engine-wage -l pl.UTF-8
+Ten silnik jest używany przez gry WAGE.
+
+%package engine-xeen
+Summary:	Xeen engine
+Summary(pl.UTF-8):	Silnik Xeen
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-xeen
+The engine is used for the Might and Magic III, IV, V
+and World of Xeen games.
+
+%description engine-xeen -l pl.UTF-8
+Ten silnik jest używany przez gry Might and Magic III, IV, V
+i World of Xeen.
+
+%package engine-zvision
+Summary:	ZVision engine
+Summary(pl.UTF-8):	Silnik ZVision
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-zvision
+The engine is used for the Zork Nemesis and
+Zork: Grand Inquisitor games.
+
+%description engine-zvision -l pl.UTF-8
+Ten silnik jest używany przez gry Zork Nemesis
+i Zork: Grand Inquisitor.
+
 %package theme-classic
 Summary:	Theme classic for ScummVM
 Summary(pl.UTF-8):	Motyw classic dla ScummVM
@@ -634,19 +896,19 @@ cd scummvm-tools-%{version_tools}
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man6,%{_pixmapsdir},%{_desktopdir},%{_libdir}/scummvm}
 
-install scummvm $RPM_BUILD_ROOT%{_bindir}
+cp -p scummvm $RPM_BUILD_ROOT%{_bindir}
 #install scummvm.6 $RPM_BUILD_ROOT%{_mandir}/man6
 
-install plugins/lib*.so $RPM_BUILD_ROOT%{_libdir}/scummvm
+cp -p plugins/lib*.so $RPM_BUILD_ROOT%{_libdir}/scummvm
 
 %{__make} -C scummvm-tools-%{version_tools} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install %{SOURCE2} $RPM_BUILD_ROOT%{_desktopdir}
-install icons/%{name}.svg $RPM_BUILD_ROOT%{_pixmapsdir}
+cp -p %{SOURCE2} $RPM_BUILD_ROOT%{_desktopdir}
+cp -p icons/%{name}.svg $RPM_BUILD_ROOT%{_pixmapsdir}
 
 install -d $RPM_BUILD_ROOT%{_datadir}/%{name}
-install gui/themes/*.zip $RPM_BUILD_ROOT%{_datadir}/%{name}
+cp -p gui/themes/*.zip $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -670,155 +932,239 @@ rm -rf $RPM_BUILD_ROOT
 
 %files engine-agi
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libagi.so
+%attr(755,root,root) %{_libdir}/scummvm/libagi.so
 
 %files engine-agos
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libagos.so
+%attr(755,root,root) %{_libdir}/scummvm/libagos.so
 
 %files engine-cge
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libcge.so
+%attr(755,root,root) %{_libdir}/scummvm/libcge.so
 
 %files engine-cine
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libcine.so
+%attr(755,root,root) %{_libdir}/scummvm/libcine.so
 
 %files engine-composer
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libcomposer.so
+%attr(755,root,root) %{_libdir}/scummvm/libcomposer.so
 
 %files engine-cruise
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libcruise.so
+%attr(755,root,root) %{_libdir}/scummvm/libcruise.so
 
 %files engine-draci
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libdraci.so
+%attr(755,root,root) %{_libdir}/scummvm/libdraci.so
 
 %files engine-drascula
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libdrascula.so
+%attr(755,root,root) %{_libdir}/scummvm/libdrascula.so
 
 %files engine-dreamweb
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libdreamweb.so
+%attr(755,root,root) %{_libdir}/scummvm/libdreamweb.so
 
 %files engine-gob
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libgob.so
+%attr(755,root,root) %{_libdir}/scummvm/libgob.so
 
 %files engine-groovie
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libgroovie.so
+%attr(755,root,root) %{_libdir}/scummvm/libgroovie.so
 
 %files engine-hugo
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libhugo.so
+%attr(755,root,root) %{_libdir}/scummvm/libhugo.so
 
 %files engine-kyra
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libkyra.so
+%attr(755,root,root) %{_libdir}/scummvm/libkyra.so
 
 %files engine-lastexpress
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/liblastexpress.so
+%attr(755,root,root) %{_libdir}/scummvm/liblastexpress.so
 
 %files engine-lure
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/liblure.so
+%attr(755,root,root) %{_libdir}/scummvm/liblure.so
 
 %files engine-made
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libmade.so
+%attr(755,root,root) %{_libdir}/scummvm/libmade.so
 
 %files engine-mohawk
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libmohawk.so
+%attr(755,root,root) %{_libdir}/scummvm/libmohawk.so
 
 %files engine-parallaction
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libparallaction.so
+%attr(755,root,root) %{_libdir}/scummvm/libparallaction.so
 
 %files engine-queen
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libqueen.so
+%attr(755,root,root) %{_libdir}/scummvm/libqueen.so
 
 %files engine-saga
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libsaga.so
+%attr(755,root,root) %{_libdir}/scummvm/libsaga.so
 
 %files engine-sci
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libsci.so
+%attr(755,root,root) %{_libdir}/scummvm/libsci.so
 
 %files engine-scumm
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libscumm.so
+%attr(755,root,root) %{_libdir}/scummvm/libscumm.so
 
 %files engine-sky
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libsky.so
+%attr(755,root,root) %{_libdir}/scummvm/libsky.so
 
 %files engine-sword1
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libsword1.so
+%attr(755,root,root) %{_libdir}/scummvm/libsword1.so
 
 %files engine-sword2
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libsword2.so
+%attr(755,root,root) %{_libdir}/scummvm/libsword2.so
 
 %files engine-sword25
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libsword25.so
+%attr(755,root,root) %{_libdir}/scummvm/libsword25.so
 
 %files engine-teenagent
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libteenagent.so
+%attr(755,root,root) %{_libdir}/scummvm/libteenagent.so
 
 %files engine-testbed
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libtestbed.so
+%attr(755,root,root) %{_libdir}/scummvm/libtestbed.so
 
 %files engine-tinsel
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libtinsel.so
+%attr(755,root,root) %{_libdir}/scummvm/libtinsel.so
 
 %files engine-touche
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libtouche.so
+%attr(755,root,root) %{_libdir}/scummvm/libtouche.so
 
 %files engine-toon
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libtoon.so
+%attr(755,root,root) %{_libdir}/scummvm/libtoon.so
 
 %files engine-tsage
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libtsage.so
+%attr(755,root,root) %{_libdir}/scummvm/libtsage.so
 
 %files engine-tucker
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libtucker.so
+%attr(755,root,root) %{_libdir}/scummvm/libtucker.so
 
 %files engine-hopkins
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libhopkins.so
+%attr(755,root,root) %{_libdir}/scummvm/libhopkins.so
 
 %files engine-pegasus
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libpegasus.so
+%attr(755,root,root) %{_libdir}/scummvm/libpegasus.so
 
 %files engine-toltecs
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libtoltecs.so
+%attr(755,root,root) %{_libdir}/scummvm/libtoltecs.so
 
 %files engine-tony
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libtony.so
+%attr(755,root,root) %{_libdir}/scummvm/libtony.so
 
 %files engine-wintermute
 %defattr(644,root,root,755)
-%dir %{_libdir}/scummvm/libwintermute.so
+%attr(755,root,root) %{_libdir}/scummvm/libwintermute.so
+
+%files engine-access
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libaccess.so
+
+%files engine-adl
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libadl.so
+
+%files engine-avalanche
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libavalanche.so
+
+%files engine-bbvs
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libbbvs.so
+
+%files engine-cge2
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libcge2.so
+
+%files engine-director
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libdirector.so
+
+%files engine-dm
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libdm.so
+
+%files engine-fullpipe
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libfullpipe.so
+
+%files engine-gnap
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libgnap.so
+
+%files engine-lab
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/liblab.so
+
+%files engine-macventure
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libmacventure.so
+
+%files engine-mads
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libmads.so
+
+%files engine-mortevielle
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libmortevielle.so
+
+%files engine-neverhood
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libneverhood.so
+
+%files engine-prince
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libprince.so
+
+%files engine-sherlock
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libsherlock.so
+
+%files engine-titanic
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libtitanic.so
+
+%files engine-voyeur
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libvoyeur.so
+
+%files engine-wage
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libwage.so
+
+%files engine-xeen
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libxeen.so
+
+%files engine-zvision
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libzvision.so
 
 %files theme-classic
 %defattr(644,root,root,755)
