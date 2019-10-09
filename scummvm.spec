@@ -16,6 +16,7 @@ Patch1:		dwarf-debug.patch
 URL:		http://scummvm.org/
 BuildRequires:	SDL-devel >= 1.2.2
 BuildRequires:	alsa-lib-devel >= 0.9
+BuildRequires:	boost-devel
 BuildRequires:	flac-devel >= 1.0.1
 %ifarch %{ix86} %{x8664}
 BuildRequires:	fluidsynth-devel
