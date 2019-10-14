@@ -1,15 +1,15 @@
-%define		version_tools	1.9.0
+%define		version_tools	2.1.0
 Summary:	Graphic adventure game interpreter
 Summary(pl.UTF-8):	Interpreter gier przygodowych
 Name:		scummvm
-Version:	1.9.0
-Release:	5
+Version:	2.1.0
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Games
 Source0:	http://scummvm.org/frs/scummvm/%{version}/%{name}-%{version}.tar.xz
-# Source0-md5:	3255706992edaf30380ce8a49cb305b7
+# Source0-md5:	9ef2432448bfa41248340da586358135
 Source1:	http://scummvm.org/frs/scummvm-tools/%{version_tools}/%{name}-tools-%{version_tools}.tar.xz
-# Source1-md5:	7b472cc2895161c64630df92df4c65b0
+# Source1-md5:	5b0615e87d5148e9871ea355d03927e1
 Source2:	%{name}.desktop
 Patch0:		%{name}-wx-config.patch
 Patch1:		dwarf-debug.patch
@@ -125,6 +125,18 @@ Używany w następujących grach:
 - Simon the Sorcerer 2
 - The Feeble Files
 
+%package engine-bladerunner
+Summary:	Blade Runner engine
+Summary(pl.UTF-8):	Silnik Blade Runner
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-bladerunner
+Blade Runner engine.
+
+%description engine-bladerunner -l pl.UTF-8
+Silnik Blade Runner.
+
 %package engine-cge
 Summary:	CGE engine
 Summary(pl.UTF-8):	Silnik CGE
@@ -136,6 +148,18 @@ CGE engine.
 
 %description engine-cge -l pl.UTF-8
 Silnik CGE.
+
+%package engine-chewy
+Summary:	Chewy: Esc from F5 engine
+Summary(pl.UTF-8):	Silnik Chewy: Esc from F5
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-chewy
+Chewy: Esc from F5 engine.
+
+%description engine-chewy -l pl.UTF-8
+Silnik Chewy: Esc from F5.
 
 %package engine-cine
 Summary:	Cinematique engine
@@ -173,6 +197,30 @@ Cruise engine.
 %description engine-cruise -l pl.UTF-8
 Silnik Cruise.
 
+%package engine-cryo
+Summary:	Cryo engine
+Summary(pl.UTF-8):	Silnik Cryo
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-cryo
+Engine to run adventure games created by Cryo Interactive.
+
+%description engine-cryo -l pl.UTF-8
+Silnik do uruchamiania gier stworzonych przez Cryo Interactive.
+
+%package engine-cryomni3d
+Summary:	Cryoni3d engine
+Summary(pl.UTF-8):	Silnik Cryoni3d
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-cryomni3d
+Engine to run adventure games created by Cryo Interactive.
+
+%description engine-cryomni3d -l pl.UTF-8
+Silnik do uruchamiania gier stworzonych przez Cryo Interactive.
+
 %package engine-draci
 Summary:	Draci engine
 Summary(pl.UTF-8):	Silnik Draci
@@ -209,6 +257,18 @@ Dreamweb engine.
 %description engine-dreamweb -l pl.UTF-8
 Silnik Dreamweb.
 
+%package engine-glk
+Summary:	Glk engine
+Summary(pl.UTF-8):	Silnik Glk
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-glk
+Glk Engine.
+
+%description engine-glk -l pl.UTF-8
+Silnik Glk.
+
 %package engine-gob
 Summary:	Gob engine
 Summary(pl.UTF-8):	Silnik Gob
@@ -235,6 +295,18 @@ Engine to run adventure games created by Trilobyte or Aftermath Media
 Silnik do uruchamiania gier stworzonych przez Trilobyte i Aftermath
 Media (The 7th Guest, The 11th Hour).
 
+%package engine-hdb
+Summary:	HDB engine
+Summary(pl.UTF-8):	Silnik HDB
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-hdb
+HDB engine for Hyperspace Delivery Boy.
+
+%description engine-hdb -l pl.UTF-8
+Silnik HDB do gry Hyperspace Delivery Boy.
+
 %package engine-hugo
 Summary:	Hugo engine
 Summary(pl.UTF-8):	Silnik Hugo
@@ -246,6 +318,22 @@ Hugo engine.
 
 %description engine-hugo -l pl.UTF-8
 Silnik Hugo.
+
+%package engine-illusions
+Summary:	Illusions engine
+Summary(pl.UTF-8):	Silnik Illusions
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-illusions
+Illusions is an engine used in adventure games by The Illusions Gaming
+Company such as Duckman: The Graphic Adventures of a Private Dick and 
+Beavis and Butt-Head: Do U.
+
+%description engine-illusions -l pl.UTF-8
+Silnik Illusions jest wykorzystywany w wydanych przez The Illusions
+Gaming Company grach takich jak Duckman: The Graphic Adventures of a
+Private Dick oraz Beavis and Butt-Head: Do U.
 
 %package engine-kyra
 Summary:	Kyrandia engine
@@ -270,6 +358,20 @@ Lastexpress is the engine for the game Lastexpress of the Temptress.
 
 %description engine-lastexpress -l pl.UTF-8
 Lastexpress jest silnikiem dla gry Lastexpress of the Temptress.
+
+%package engine-lilliput
+Summary:	Lilliput engine
+Summary(pl.UTF-8):	Silnik lilliput
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-lilliput
+Lilliput is the engine for gaemes The Adventures of Robin Hood and
+Rome: Pathway to Power.
+
+%description engine-lilliput -l pl.UTF-8
+Lilliput jest silnikiem dla gier The Adventures of Robin Hood oraz
+Rome: Pathway to power.
 
 %package engine-lure
 Summary:	Lure engine
@@ -312,6 +414,19 @@ The Mohawk engine was developed by Brøderbund starting in the early
 Silnik Mohawk został stworzony przez Brøderbund we wczesnych latach
 90-ych, na potrzeby gry Myst.
 
+%package engine-mutationofjb
+Summary:	MutationOfJB engine
+Summary(pl.UTF-8):	Silnik MutationOfJB
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-mutationofjb
+This engine is used by Mutation of J.B. by Invention.
+
+%description engine-mutationofjb -l pl.UTF-8
+Ten silnik jest wykorzystywany przez grę Mutation of J.B. wydaną przez
+Invention
+
 %package engine-parallaction
 Summary:	Parallaction engine
 Summary(pl.UTF-8):	Silnik Parallaction
@@ -323,6 +438,33 @@ Parallaction engine.
 
 %description engine-parallaction -l pl.UTF-8
 Silnik Parallaction.
+
+%package engine-pink
+Summary:	Pink Panther engine
+Summary(pl.UTF-8):	Silnik Pink Panther
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-pink
+This engine runs the adventure games Pink Panther: Passport to Peril
+and Pink Panther: Hokus Pokus Pink by Wanderlust Interactive.
+The internal name of the engine is OxCart Runtime.
+
+%description engine-pink -l pl.UTF-8
+Ten silnik jest wykorzystywany przy grach Pink Panther: Passport to
+Peril oraz Pink Panther: Hokus Pokus Pink.
+
+%package engine-plumbers
+Summary:	Plumbers engine
+Summary(pl.UTF-8):	Silnik Plumbers
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-plumbers
+This engine was used in Plumbers Don't Wear Ties.
+
+%description engine-plumbers -l pl.UTF-8
+Ten silnik jest wykorzystywany przy grze Plumbers Don't Wear Ties.
 
 %package engine-queen
 Summary:	Queen engine
@@ -391,6 +533,22 @@ Beneath a Steel Sky.
 Sky jest wewnętrzną nazwą na wariant Virtual Theatre, który uruchamia
 Beneath a Steel Sky.
 
+%package engine-sludge
+Summary:	SLUDGE engine
+Summary(pl.UTF-8):	Silnik SLUDGE
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-sludge
+SLUDGE (standing for Scripting Language for Unhindered Development of
+a Gaming Environment) is a system by which anyone (within reason) can
+make an adventure game.
+
+%description engine-sludge -l pl.UTF-8
+SLUDGE (skrót od Scripting Language for Unhindered Development of
+a Gaming Environment) to środowisko w którym każdy może stworzyć
+grę przygodową.
+
 %package engine-sword1
 Summary:	Sword1 engine
 Summary(pl.UTF-8):	Silnik Sword1
@@ -426,6 +584,32 @@ Sword2.5 engine.
 
 %description engine-sword25 -l pl.UTF-8
 Silnik Sword2.5.
+
+%package engine-startrek
+Summary:	Star Trek engine
+Summary(pl.UTF-8):	Silnik Star Trek
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-startrek
+This engine runs the adventure games Star Trek: 25th Anniversary
+and Star Trek: Judgment Rites by Interplay. 
+
+%description engine-startrek -l pl.UTF-8
+Ten silnik jest używany do gry w Star Trek: 25th Anniversary
+oraz Star Trek: Judgement Rites.
+
+%package engine-supernova
+Summary:	Mission Supernova engine
+Summary(pl.UTF-8):	Silnik Mission Supernova
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-supernova
+This engine runs the adventure games Mission Supernova.
+
+%description engine-supernova -l pl.UTF-8
+Ten silnik jest używany do gry w Mission Supernova.
 
 %package engine-teenagent
 Summary:	TeenAgent engine
@@ -880,7 +1064,7 @@ cd ..
 
 %{__make} \
 	CXX="%{__cxx}" \
-	CXXFLAGS="%{rpmcppflags} %{rpmcflags} -fpic $(wx-gtk2-unicode-config --cppflags)" \
+	CXXFLAGS="%{rpmcppflags} %{rpmcflags} -fpic $(wx-gtk2-unicode-config --cppflags) $(pkg-config --cflags freetype2)" \
 	LDFLAGS="%{rpmcflags} %{rpmldflags}"
 
 cd scummvm-tools-%{version_tools}
@@ -916,7 +1100,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS COPYRIGHT NEWS README TODO
+%doc AUTHORS CONTRIBUTING.md COPYRIGHT NEWS.md README.md TODO
 %attr(755,root,root) %{_bindir}/scummvm
 %dir %{_libdir}/scummvm
 #%{_mandir}/man6/*
@@ -939,9 +1123,17 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/scummvm/libagos.so
 
+%files engine-bladerunner
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libbladerunner.so
+
 %files engine-cge
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/scummvm/libcge.so
+
+%files engine-chewy
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libchewy.so
 
 %files engine-cine
 %defattr(644,root,root,755)
@@ -954,6 +1146,14 @@ rm -rf $RPM_BUILD_ROOT
 %files engine-cruise
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/scummvm/libcruise.so
+
+%files engine-cryo
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libcryo.so
+
+%files engine-cryomni3d
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libcryomni3d.so
 
 %files engine-draci
 %defattr(644,root,root,755)
@@ -971,13 +1171,25 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/scummvm/libgob.so
 
+%files engine-glk
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libglk.so
+
 %files engine-groovie
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/scummvm/libgroovie.so
 
+%files engine-hdb
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libhdb.so
+
 %files engine-hugo
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/scummvm/libhugo.so
+
+%files engine-illusions
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libillusions.so
 
 %files engine-kyra
 %defattr(644,root,root,755)
@@ -986,6 +1198,10 @@ rm -rf $RPM_BUILD_ROOT
 %files engine-lastexpress
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/scummvm/liblastexpress.so
+
+%files engine-lilliput
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/liblilliput.so
 
 %files engine-lure
 %defattr(644,root,root,755)
@@ -999,9 +1215,21 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/scummvm/libmohawk.so
 
+%files engine-mutationofjb
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libmutationofjb.so
+
 %files engine-parallaction
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/scummvm/libparallaction.so
+
+%files engine-pink
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libpink.so
+
+%files engine-plumbers
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libplumbers.so
 
 %files engine-queen
 %defattr(644,root,root,755)
@@ -1023,6 +1251,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/scummvm/libsky.so
 
+%files engine-sludge
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libsludge.so
+
 %files engine-sword1
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/scummvm/libsword1.so
@@ -1034,6 +1266,14 @@ rm -rf $RPM_BUILD_ROOT
 %files engine-sword25
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/scummvm/libsword25.so
+
+%files engine-startrek
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libstartrek.so
+
+%files engine-supernova
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libsupernova.so
 
 %files engine-teenagent
 %defattr(644,root,root,755)
