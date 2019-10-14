@@ -1045,6 +1045,18 @@ Theme modern for ScummVM.
 %description theme-modern -l pl.UTF-8
 Motyw modern dla ScummVM.
 
+%package theme-remastered
+Summary:	Theme remastered for ScummVM
+Summary(pl.UTF-8):	Motyw remastered dla ScummVM
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description theme-remastered
+Theme remastered for ScummVM.
+
+%description theme-remastered -l pl.UTF-8
+Motyw remastered dla ScummVM.
+
 %prep
 %setup -q -a 1
 %patch1 -p1
@@ -1414,3 +1426,7 @@ rm -rf $RPM_BUILD_ROOT
 %files theme-modern
 %defattr(644,root,root,755)
 %{_datadir}/%{name}/scummmodern.*
+
+%files theme-remastered
+%defattr(644,root,root,755)
+%{_datadir}/%{name}/scummremastered.*
