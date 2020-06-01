@@ -2,25 +2,24 @@
 Summary:	Graphic adventure game interpreter
 Summary(pl.UTF-8):	Interpreter gier przygodowych
 Name:		scummvm
-Version:	2.1.0
+Version:	2.1.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Games
 Source0:	http://scummvm.org/frs/scummvm/%{version}/%{name}-%{version}.tar.xz
-# Source0-md5:	9ef2432448bfa41248340da586358135
+# Source0-md5:	d75fec6358f7814b47d6aca5e18c9863
 Source1:	http://scummvm.org/frs/scummvm-tools/%{version_tools}/%{name}-tools-%{version_tools}.tar.xz
 # Source1-md5:	5b0615e87d5148e9871ea355d03927e1
 Source2:	%{name}.desktop
 Patch0:		%{name}-wx-config.patch
 Patch1:		dwarf-debug.patch
+Patch2:		fluidsynth-printf-attr.patch
 URL:		http://scummvm.org/
 BuildRequires:	SDL-devel >= 1.2.2
 BuildRequires:	alsa-lib-devel >= 0.9
 BuildRequires:	boost-devel
 BuildRequires:	flac-devel >= 1.0.1
-%ifarch %{ix86} %{x8664}
 BuildRequires:	fluidsynth-devel
-%endif
 BuildRequires:	freetype-devel
 BuildRequires:	libmad-devel
 BuildRequires:	libmpeg2-devel >= 0.3.2
@@ -1063,6 +1062,7 @@ Motyw remastered dla ScummVM.
 cd scummvm-tools-%{version_tools}
 %patch0 -p2
 cd ..
+%patch2 -p1
 
 %{__sed} -i -e 's:"plugins":"%{_libdir}/scummvm":' base/plugins.cpp
 
