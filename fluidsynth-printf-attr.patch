@@ -1,10 +1,11 @@
 --- scummvm-2.1.1/audio/softsynth/fluidsynth.cpp.orig	2020-01-17 21:06:39.000000000 +0100
 +++ scummvm-2.1.1/audio/softsynth/fluidsynth.cpp	2020-06-01 10:20:46.232483212 +0200
-@@ -20,6 +20,7 @@
+@@ -20,6 +20,8 @@
   *
   */
  
-+#define FORBIDDEN_SYMBOL_ALLOW_ALL
++// __attribute__ ((format (printf, 2, 3))) in fluidsynth/log.h
++#define FORBIDDEN_SYMBOL_EXCEPTION_printf
  #include "common/scummsys.h"
  
  #ifdef USE_FLUIDSYNTH
