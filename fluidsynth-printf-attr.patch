@@ -6,6 +6,6 @@
  
 +// __attribute__ ((format (printf, 2, 3))) in fluidsynth/log.h
 +#define FORBIDDEN_SYMBOL_EXCEPTION_printf
- #include "common/scummsys.h"
- 
- #ifdef USE_FLUIDSYNTH
+ #if defined(HAVE_CONFIG_H)
+ #include "config.h"
+ #endif

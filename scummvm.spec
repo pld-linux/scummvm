@@ -1,15 +1,15 @@
-%define		version_tools	2.1.0
+%define		version_tools	2.2.0
 Summary:	Graphic adventure game interpreter
 Summary(pl.UTF-8):	Interpreter gier przygodowych
 Name:		scummvm
-Version:	2.1.1
-Release:	2
+Version:	2.2.0
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Games
-Source0:	http://scummvm.org/frs/scummvm/%{version}/%{name}-%{version}.tar.xz
-# Source0-md5:	d75fec6358f7814b47d6aca5e18c9863
-Source1:	http://scummvm.org/frs/scummvm-tools/%{version_tools}/%{name}-tools-%{version_tools}.tar.xz
-# Source1-md5:	5b0615e87d5148e9871ea355d03927e1
+Source0:	https://downloads.scummvm.org/frs/scummvm/%{version}/%{name}-%{version}.tar.xz
+# Source0-md5:	aaa80767e08ab062fd1084cf8ae9cd30
+Source1:	https://downloads.scummvm.org/frs/scummvm-tools/%{version_tools}/%{name}-tools-%{version_tools}.tar.xz
+# Source1-md5:	b788cd15f6becca13197032f42a15109
 Source2:	%{name}.desktop
 Patch0:		%{name}-wx-config.patch
 Patch1:		dwarf-debug.patch
@@ -29,9 +29,10 @@ BuildRequires:	libvorbis-devel
 BuildRequires:	nasm
 %endif
 BuildRequires:	sed >= 4.0
+BuildRequires:	tar >= 1:1.22
 BuildRequires:	wxGTK2-unicode-devel
 BuildRequires:	wxWidgets-devel
-BuildRequires:	zlib-devel
+BuildRequires:	xz
 BuildRequires:	zlib-devel
 Obsoletes:	scummvm-engine-m4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -232,6 +233,18 @@ Draci engine.
 %description engine-draci -l pl.UTF-8
 Silnik Draci.
 
+%package engine-dragons
+Summary:	Dragons engine
+Summary(pl.UTF-8):	Silnik Dragons
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-dragons
+Dragons engine.
+
+%description engine-dragons -l pl.UTF-8
+Silnik Dragons.
+
 %package engine-drascula
 Summary:	Drascula engine
 Summary(pl.UTF-8):	Silnik Drascula
@@ -279,6 +292,18 @@ Engine to run adventure games created by Coktel Vision.
 
 %description engine-gob -l pl.UTF-8
 Silnik do uruchamiania gier stworzonych przez Coktel Vision.
+
+%package engine-griffon
+Summary:	Griffon engine
+Summary(pl.UTF-8):	Silnik Griffon
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-griffon
+Griffon Engine.
+
+%description engine-griffon -l pl.UTF-8
+Silnik Griffon.
 
 %package engine-groovie
 Summary:	Groovie engine
@@ -333,6 +358,18 @@ Beavis and Butt-Head: Do U.
 Silnik Illusions jest wykorzystywany w wydanych przez The Illusions
 Gaming Company grach takich jak Duckman: The Graphic Adventures of a
 Private Dick oraz Beavis and Butt-Head: Do U.
+
+%package engine-kingdom
+Summary:	Kingdom engine
+Summary(pl.UTF-8):	Silnik Kingdom
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-kingdom
+Kingdom engine.
+
+%description engine-kingdom -l pl.UTF-8
+Silnik Kingdom.
 
 %package engine-kyra
 Summary:	Kyrandia engine
@@ -437,6 +474,18 @@ Parallaction engine.
 
 %description engine-parallaction -l pl.UTF-8
 Silnik Parallaction.
+
+%package engine-petka
+Summary:	Petka engine
+Summary(pl.UTF-8):	Silnik Petka
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-petka
+Petka engine.
+
+%description engine-petka -l pl.UTF-8
+Silnik Petka.
 
 %package engine-pink
 Summary:	Pink Panther engine
@@ -696,6 +745,18 @@ The Tucker engine is used in Bud Tucker in Double Trouble.
 
 %description engine-tucker -l pl.UTF-8
 Silnik Tucker jest używany przez Bud Tucker in Double Trouble.
+
+%package engine-ultima
+Summary:	Ultima engine
+Summary(pl.UTF-8):	Silnik Ultima
+Group:		X11/Applications/Games
+Requires:	%{name} = %{version}-%{release}
+
+%description engine-ultima
+Ultima engine.
+
+%description engine-ultima -l pl.UTF-8
+Silnik Ultima.
 
 %package engine-hopkins
 Summary:	Hopkins FBI engine
@@ -1067,6 +1128,9 @@ cd ..
 %{__sed} -i -e 's:"plugins":"%{_libdir}/scummvm":' base/plugins.cpp
 
 %build
+CXX="%{__cxx}" \
+CXXFLAGS="%{rpmcppflags} %{rpmcflags}" \
+LDFLAGS="%{rpmcflags} %{rpmldflags}" \
 ./configure \
 	--prefix=%{_prefix} \
 	--disable-debug \
@@ -1075,19 +1139,18 @@ cd ..
 	--default-dynamic
 
 %{__make} \
-	CXX="%{__cxx}" \
-	CXXFLAGS="%{rpmcppflags} %{rpmcflags} -fpic $(wx-gtk2-unicode-config --cppflags) $(pkg-config --cflags freetype2)" \
-	LDFLAGS="%{rpmcflags} %{rpmldflags}"
+	VERBOSE_BUILD=1
 
 cd scummvm-tools-%{version_tools}
+CXX="%{__cxx}" \
+CXXFLAGS="%{rpmcppflags} %{rpmcflags}" \
+LDFLAGS="%{rpmcflags} %{rpmldflags}" \
 ./configure \
 	--prefix=%{_prefix} \
 	--disable-debug
 
 %{__make} \
-	CXX="%{__cxx}" \
-	CXXFLAGS="%{rpmcppflags} %{rpmcflags} -DUNIX -fpermissive $(wx-gtk2-unicode-config --cppflags)" \
-	LDFLAGS="%{rpmcflags} %{rpmldflags} $(wx-gtk2-unicode-config --libs)"
+	VERBOSE_BUILD=1
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -1171,6 +1234,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/scummvm/libdraci.so
 
+%files engine-dragons
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libdragons.so
+
 %files engine-drascula
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/scummvm/libdrascula.so
@@ -1187,6 +1254,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/scummvm/libglk.so
 
+%files engine-griffon
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libgriffon.so
+
 %files engine-groovie
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/scummvm/libgroovie.so
@@ -1202,6 +1273,10 @@ rm -rf $RPM_BUILD_ROOT
 %files engine-illusions
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/scummvm/libillusions.so
+
+%files engine-kingdom
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libkingdom.so
 
 %files engine-kyra
 %defattr(644,root,root,755)
@@ -1234,6 +1309,10 @@ rm -rf $RPM_BUILD_ROOT
 %files engine-parallaction
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/scummvm/libparallaction.so
+
+%files engine-petka
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libpetka.so
 
 %files engine-pink
 %defattr(644,root,root,755)
@@ -1314,6 +1393,10 @@ rm -rf $RPM_BUILD_ROOT
 %files engine-tucker
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/scummvm/libtucker.so
+
+%files engine-ultima
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/scummvm/libultima.so
 
 %files engine-hopkins
 %defattr(644,root,root,755)
