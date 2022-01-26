@@ -1,13 +1,30 @@
+# TODO:`warning: Installed (but unpackaged) file(s) found:
+#    /usr/lib64/scummvm/libags.so
+#    /usr/lib64/scummvm/libasylum.so
+#    /usr/lib64/scummvm/libburied.so
+#    /usr/lib64/scummvm/libgrim.so
+#    /usr/lib64/scummvm/libhadesch.so
+#    /usr/lib64/scummvm/libicb.so
+#    /usr/lib64/scummvm/libmyst3.so
+#    /usr/lib64/scummvm/libnancy.so
+#    /usr/lib64/scummvm/libngi.so
+#    /usr/lib64/scummvm/libprivate.so
+#    /usr/lib64/scummvm/libsaga2.so
+#    /usr/lib64/scummvm/libstark.so
+#    /usr/lib64/scummvm/libtrecision.so
+#    /usr/lib64/scummvm/libtwine.so
+#    /usr/share/scummvm/residualvm.zip
+
 %define		version_tools	2.2.0
 Summary:	Graphic adventure game interpreter
 Summary(pl.UTF-8):	Interpreter gier przygodowych
 Name:		scummvm
-Version:	2.2.0
-Release:	2
+Version:	2.5.1
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Games
 Source0:	https://downloads.scummvm.org/frs/scummvm/%{version}/%{name}-%{version}.tar.xz
-# Source0-md5:	aaa80767e08ab062fd1084cf8ae9cd30
+# Source0-md5:	79f7541e404f575a37bfa6be448c4046
 Source1:	https://downloads.scummvm.org/frs/scummvm-tools/%{version_tools}/%{name}-tools-%{version_tools}.tar.xz
 # Source1-md5:	b788cd15f6becca13197032f42a15109
 Source2:	%{name}.desktop
@@ -35,6 +52,7 @@ BuildRequires:	wxWidgets-devel
 BuildRequires:	xz
 BuildRequires:	zlib-devel
 Obsoletes:	scummvm-engine-m4
+Obsoletes:	scummvm-engine-fullpipe < 2.5.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		specflags_sparc	-fPIC
@@ -907,18 +925,6 @@ The engine is used for the Dungeon Master game.
 %description engine-dm -l pl.UTF-8
 Ten silnik jest używany przez grę Dungeon Master.
 
-%package engine-fullpipe
-Summary:	Fullpipe engine
-Summary(pl.UTF-8):	Silnik Fullpipe
-Group:		X11/Applications/Games
-Requires:	%{name} = %{version}-%{release}
-
-%description engine-fullpipe
-The engine is used for the Full Pipe game.
-
-%description engine-fullpipe -l pl.UTF-8
-Ten silnik jest używany przez grę Full Pipe.
-
 %package engine-gnap
 Summary:	GNAP engine
 Summary(pl.UTF-8):	Silnik GNAP
@@ -1445,10 +1451,6 @@ rm -rf $RPM_BUILD_ROOT
 %files engine-dm
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/scummvm/libdm.so
-
-%files engine-fullpipe
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/scummvm/libfullpipe.so
 
 %files engine-gnap
 %defattr(644,root,root,755)
