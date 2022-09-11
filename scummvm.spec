@@ -32,7 +32,8 @@ Patch0:		%{name}-wx-config.patch
 Patch1:		dwarf-debug.patch
 Patch2:		fluidsynth-printf-attr.patch
 URL:		http://scummvm.org/
-BuildRequires:	SDL-devel >= 1.2.2
+BuildRequires:	SDL2-devel
+BuildRequires:	SDL2_net-devel
 BuildRequires:	alsa-lib-devel >= 0.9
 BuildRequires:	boost-devel
 BuildRequires:	flac-devel >= 1.0.1
