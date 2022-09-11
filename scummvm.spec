@@ -31,6 +31,7 @@ Source2:	%{name}.desktop
 Patch0:		%{name}-wx-config.patch
 Patch1:		dwarf-debug.patch
 Patch2:		fluidsynth-printf-attr.patch
+Patch3:		sdl2.patch
 URL:		http://scummvm.org/
 BuildRequires:	SDL2-devel
 BuildRequires:	SDL2_net-devel
@@ -1131,6 +1132,7 @@ cd scummvm-tools-%{version_tools}
 %patch0 -p2
 cd ..
 %patch2 -p1
+%patch3 -p1
 
 %{__sed} -i -e 's:"plugins":"%{_libdir}/scummvm":' base/plugins.cpp
 
