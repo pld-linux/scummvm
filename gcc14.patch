@@ -1,0 +1,55 @@
+--- scummvm-2.8.1/engines/ags/lib/freetype-2.1.3/autohint/ahglyph.cpp.orig	2024-03-15 23:57:03.000000000 +0100
++++ scummvm-2.8.1/engines/ags/lib/freetype-2.1.3/autohint/ahglyph.cpp	2024-12-16 18:59:23.796592920 +0100
+@@ -296,7 +296,7 @@
+ 	AH_Point point = outline->points;
+ 	AH_Point point_limit = point + outline->num_points;
+ 	FT_Vector *vec = gloader->current.outline.points;
+-	char *tag = gloader->current.outline.tags;
++	unsigned char *tag = gloader->current.outline.tags;
+ 
+ 	/* we assume that the glyph loader has already been checked for storage */
+ 	for (; point < point_limit; point++, vec++, tag++) {
+@@ -408,7 +408,7 @@
+ 
+ 		/* compute Bezier flags */
+ 		{
+-			char *tag = source->tags;
++			unsigned char *tag = source->tags;
+ 
+ 			for (point = points; point < point_limit; point++, tag++) {
+ 				switch (FT_CURVE_TAG(*tag)) {
+@@ -457,7 +457,7 @@
+ 		{
+ 			AH_Point *contour = outline->contours;
+ 			AH_Point *contour_limit = contour + outline->num_contours;
+-			short *end = source->contours;
++			unsigned short *end = source->contours;
+ 			short idx = 0;
+ 
+ 			for (; contour < contour_limit; contour++, end++) {
+--- a/engines/icb/common/px_array.h
++++ b/engines/icb/common/px_array.h
+@@ -100,9 +100,9 @@ const Type &T_MYACTARRAY::operator[](uint32 n) const {
+ 	// It is permissable to look at an element that has not been defined, as the constructor assures
+ 	// that the contents are valid
+ 	if (n >= m_userPosition) {
+-		// We must cast this to a type that can change
+-		((const rcActArray<Type> *)this)->ResizeArray(n);
+-		((const rcActArray<Type> *)this)->m_userPosition = n + 1;
++		// Remove any 'constness' for a resize
++		(const_cast<rcActArray<Type> *>(this))->ResizeArray(n);
++		(const_cast<rcActArray<Type> *>(this))->m_userPosition = n + 1;
+ 	}
+ 
+ 	return (*(m_contents[n]));
+@@ -304,8 +304,8 @@ template <class Type> const Type rcIntArray<Type>::operator[](uint32 index) cons
+ 	// It is permissable to look at an element that has not been defined, as it will have been set to 0
+ 	if (index >= m_userPosition) {
+ 		// Remove any 'constness' for a resize
+-		((const rcIntArray<Type> *)this)->ResizeArray(index);
+-		((const rcIntArray<Type> *)this)->m_userPosition = index + 1;
++		(const_cast<rcIntArray<Type> *>(this))->ResizeArray(index);
++		(const_cast<rcIntArray<Type> *>(this))->m_userPosition = index + 1;
+ 	}
+ 
+ 	return m_contents[index];

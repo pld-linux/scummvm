@@ -2,17 +2,18 @@
 Summary:	Graphic adventure game interpreter
 Summary(pl.UTF-8):	Interpreter gier przygodowych
 Name:		scummvm
-Version:	2.7.1
+Version:	2.8.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Games
 Source0:	https://downloads.scummvm.org/frs/scummvm/%{version}/%{name}-%{version}.tar.xz
-# Source0-md5:	24275e3caa26b9dc0d21020411db77c9
+# Source0-md5:	641a3937baf17ac6123ae6ed664e5ce3
 Source1:	https://downloads.scummvm.org/frs/scummvm-tools/%{version_tools}/%{name}-tools-%{version_tools}.tar.xz
 # Source1-md5:	0f93bc0d423c6d93bfade50a7e6f2bbe
 Patch0:		%{name}-wx-config.patch
 Patch1:		dwarf-debug.patch
 Patch2:		fluidsynth-printf-attr.patch
+Patch3:		gcc14.patch
 URL:		http://scummvm.org/
 BuildRequires:	SDL2-devel
 BuildRequires:	SDL2_net-devel
@@ -166,11 +167,12 @@ Zestaw narzędzi mogących być użytecznymi w połączeniu ze ScummVM.
 
 %prep
 %setup -q -a 1
-%patch1 -p1
+%patch -P 1 -p1
 cd scummvm-tools-%{version_tools}
-%patch0 -p2
+%patch -P 0 -p2
 cd ..
-%patch2 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
 
 %{__sed} -i -e 's:"plugins":"%{_libdir}/scummvm":' base/plugins.cpp
 
@@ -223,9 +225,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_pixmapsdir}/*
 %{_desktopdir}/*.desktop
 %{_datadir}/%{name}
-%{_iconsdir}/hicolor/scalable/apps/scummvm.svg
-%{_datadir}/metainfo/scummvm.appdata.xml
-
+%{_iconsdir}/hicolor/scalable/apps/org.scummvm.scummvm.svg
+%{_datadir}/metainfo/org.scummvm.scummvm.metainfo.xml
 
 %files tools
 %defattr(644,root,root,755)
