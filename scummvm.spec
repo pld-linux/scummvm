@@ -31,8 +31,6 @@ BuildRequires:	nasm
 %endif
 BuildRequires:	sed >= 4.0
 BuildRequires:	tar >= 1:1.22
-BuildRequires:	wxGTK2-unicode-devel
-BuildRequires:	wxWidgets-devel
 BuildRequires:	xz
 BuildRequires:	zlib-devel
 Obsoletes:	scummvm-engine-access < 2.7.1
